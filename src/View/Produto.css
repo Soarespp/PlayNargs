@@ -1,0 +1,83 @@
+.Produto {
+    display: flexbox;
+    margin-top: 15px;
+    margin-left: 15%;
+    margin-right: 15%;
+    border: 2px groove rgb(70, 130, 180); 
+    background:#e6e6e6;
+    border-radius: 8px;
+    font-family: cursive;
+    height: 700px;
+}
+
+.Produto .Header{
+    text-align: center;
+    border-bottom: 3px groove rgb(70,130,180);
+    background-color: inherit;
+    display: flex;
+    width: 97%;
+    margin-left: 15px;
+    
+}
+
+.Produto .Header .input{
+    padding: 100px;
+    
+}
+
+.Produto .Content-Dados{
+    display: inline-flex;
+    flex:2;
+    /* border: 2px groove rgb(70, 130, 180);  */
+    margin: 15px;
+    height: 520px;
+    width: 130ch;
+}
+
+.Produto .Content-Dados .Div1{
+    /* border: 2px groove rgb(70, 130, 180);  */
+    width: 650px;        
+    margin-left: 10px;
+    align-items: left;
+}
+
+.Produto .Content-Dados .Div2{
+    display: flex;
+    border: 7px groove rgb(70, 130, 180); 
+    border-radius: 10px;
+    margin-left: 120px;
+    margin-top: 50px;
+    width: 400px;
+    height: 400px;
+    align-items: center;
+}
+.Produto .Content-Dados .Div1 .input{
+    width: 500px;   
+}
+
+.Produto .Content-Dados .Div1 .memo{
+    align-items: left;
+    width: 500px;  
+    height: 200px; 
+}
+
+.Produto .Controle{
+    align-items: center;
+    display: inline-flex;
+    /* border: 2px groove #4682b4;  */
+    margin-left: 15px;
+}
+
+.Produto .Controle .Salvar{
+    align-items: center;
+    display: inline-flex;
+    /* border: 2px groove #4682b4;  */
+    width: 80px;
+}
+
+.Produto .Controle .Cancelar{
+    align-items: center;
+    display: inline-flex;
+    /* border: 2px groove #4682b4;  */
+    width: 80px;
+}

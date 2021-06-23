@@ -1,0 +1,55 @@
+.Card {
+    flex:1;
+    display: flexbox;
+    flex: 2;
+    margin: 3px;
+    flex-direction: column;
+    
+} 
+.Container{
+    display: flex;
+    height: inherit;
+}
+.Data{
+    flex: 1;
+    display: inline-flex;
+    padding-left: 10px;
+    width: 50%;
+    color: #030303;
+}
+.Title{
+    width: 50%;
+    display: inline-flex;
+    font-size: 13px;
+    text-align: left;
+}
+.Descripte{
+    width: 50%;   
+    display: inline-block; 
+    font-size: 15px;
+    text-align: right;
+}
+.Controler{
+    display: flow-root;
+    padding-right: 5px;
+    text-align: right;
+    width: 50%;
+    margin: 10px;
+    height: inherit;
+    color: black;
+}
+.Controler .Like{
+    height: 50%;
+}
+
+.Controler .Dislike{
+    margin-bottom: 5px;
+}
+
+.CardSimple.First { color: #FFF; background-color: #e6bc53; border: 2px groove #e6bc53; border-radius: 8px; height: 110px}
+
+.CardSimple.Second { color: #FFF; background-color: #f0f0f0; border: 2px groove #f0f0f0; border-radius: 8px; height: 110px}
+
+.CardSimple.Third { color: #FFF; background-color: #c36729; border: 2px groove #c36729; border-radius: 8px; height: 110px}
+
+.CardSimple { color: #FFF; background-color: rgba(70,130,180, 0.3); border: 2px groove #4682b4; border-radius: 8px; height: 80px 100%}

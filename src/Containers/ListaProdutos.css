@@ -1,0 +1,15 @@
+.ListaProdutos{
+    display: inline-grid;
+    text-align: center;
+    border: 2px groove rgb(70, 130, 180);
+    border-radius: 8px;
+    margin-left: 15%;
+    margin-right: 15%;
+    /* background: #f2f2f2;
+     */
+     background: #fffafa; 
+    background-attachment: fixed;
+    padding: 10px;
+    width: 1300px 100%;
+    flex-wrap: wrap;
+}

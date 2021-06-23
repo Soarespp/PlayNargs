@@ -1,0 +1,1 @@
+const CorBorda = "#4682b4";

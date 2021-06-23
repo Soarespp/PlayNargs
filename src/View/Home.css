@@ -1,0 +1,19 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    text-align: center;    
+    background-color: #ffff;  
+  }
+  
+  
+  .h1 {
+    font-weight: 200;
+  }
+  
+  .linha {
+    display: flex;
+  }
+  
+  
+  
+  
