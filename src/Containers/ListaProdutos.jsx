@@ -78,12 +78,6 @@ class ListaProtudos extends Component {
         console.log(Arr);
         const dados = Arr;
 
-        // dados.map(item => {
-        //     if (item.id === Idp) {
-        //         return item.like++
-        //     }
-        // });
-
         dados.forEach(item => {
             if (item.id === Idp) {
                 return item.like++

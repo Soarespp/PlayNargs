@@ -1,63 +1,11 @@
 import './ListaProdutos.css';
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from "react-redux";
 
 import Card from '../Component/CardSimple';
-
-const DadosProd =
-    [
-        {
-            id: 0,
-            name: 'Fambroesa',
-            marca: 'ZOMMO',
-            like: 5,
-            dislike: 0,
-            loja: 'centro'
-        },
-        {
-            id: 1,
-            name: 'Amora',
-            marca: 'ZOMMO',
-            like: 0,
-            dislike: 0,
-            loja: 'centro'
-        },
-        {
-            id: 2,
-            name: 'Fambroesa',
-            marca: 'NELIX',
-            like: 0,
-            dislike: 5,
-            loja: 'Argentina'
-        },
-        {
-            id: 3,
-            name: 'Picole',
-            marca: 'Zommo',
-            like: 3,
-            dislike: 3,
-            loja: 'Argentina'
-        },
-        {
-            id: 4,
-            name: 'Menta',
-            marca: 'Nay',
-            like: 25,
-            dislike: 40,
-            loja: 'Argentina'
-        },
-        {
-            id: 5,
-            name: 'Chiclete',
-            marca: 'NAY',
-            like: 55,
-            dislike: 1,
-            loja: 'Argentina'
-        }
-    ]
-    ;
+import { alteraProduto } from '../store/actions/produtos';
 
 function clickLike(Arr, Idp) {
-    console.log(Arr);
     const dados = Arr;
 
     dados.forEach(item => {
@@ -65,7 +13,6 @@ function clickLike(Arr, Idp) {
             return item.like++
         }
     });
-
     return dados;
 };
 
@@ -100,9 +47,9 @@ function getNota(like, dislike) {
 };
 
 const ListaProtudos = (props) => {
-    const [Produtos, setProdutos] = useState(DadosProd)
+    const { produtos } = props;
 
-    const lstProduto = Produtos.slice()
+    const lstProduto = produtos.slice();
     lstProduto.sort((a, b) => { return getNota(b.like, b.dislike) - getNota(a.like, a.dislike) });
 
     return (
@@ -111,8 +58,8 @@ const ListaProtudos = (props) => {
                 <Card produto={produto}
                     position={idx}
                     nota={getNota(produto.like, produto.dislike)}
-                    clickLike={() => setProdutos(clickLike(lstProduto, produto.id))}
-                    clickDisLike={() => setProdutos(clickDisLike(lstProduto, produto.id))}
+                    clickLike={() => props.setProdutos(clickLike(lstProduto, produto.id))}
+                    clickDisLike={() => props.setProdutos(clickDisLike(lstProduto, produto.id))}
                 />
             ))
             }
@@ -120,4 +67,23 @@ const ListaProtudos = (props) => {
     )
 }
 
-export default ListaProtudos;
+function mapStateToProps(state) {
+    return {
+        produtos: state.dados.produtos,
+    };
+}
+
+function mapDispatchToProp(dispatch) {
+    return {
+        setProdutos(novoProduto) {
+            //action creator -> action
+            const action = alteraProduto(novoProduto)
+            dispatch(action)
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProp
+)(ListaProtudos);
