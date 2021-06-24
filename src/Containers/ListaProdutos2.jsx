@@ -47,21 +47,25 @@ function getNota(like, dislike) {
 };
 
 const ListaProtudos = (props) => {
-    const { produtos } = props;
 
+    const { produtos, filter } = props;
     const lstProduto = produtos.slice();
-    lstProduto.sort((a, b) => { return getNota(b.like, b.dislike) - getNota(a.like, a.dislike) });
+    const regex = new RegExp(`^(.*)${filter}(.*)$`, "ig");
 
+    lstProduto.sort((a, b) => { return getNota(b.like, b.dislike) - getNota(a.like, a.dislike) });
     return (
         <div className="ListaProdutos" >
-            {lstProduto.map((produto, idx) => (
-                <Card produto={produto}
-                    position={idx}
-                    nota={getNota(produto.like, produto.dislike)}
-                    clickLike={() => props.setProdutos(clickLike(lstProduto, produto.id))}
-                    clickDisLike={() => props.setProdutos(clickDisLike(lstProduto, produto.id))}
-                />
-            ))
+            {lstProduto.length &&
+                lstProduto
+                    .filter(produto => produto.name.match(regex))
+                    .map((produto, idx) => (
+                        <Card produto={produto}
+                            position={idx}
+                            nota={getNota(produto.like, produto.dislike)}
+                            clickLike={() => props.setProdutos(clickLike(lstProduto, produto.id))}
+                            clickDisLike={() => props.setProdutos(clickDisLike(lstProduto, produto.id))}
+                        />
+                    ))
             }
         </div >
     )
@@ -70,6 +74,7 @@ const ListaProtudos = (props) => {
 function mapStateToProps(state) {
     return {
         produtos: state.dados.produtos,
+        filter: state.dados.filter,
     };
 }
 

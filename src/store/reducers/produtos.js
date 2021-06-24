@@ -1,6 +1,7 @@
-import { PROD_CHANGE } from '../actions/actionsTypes';
+import { PROD_CHANGE, SET_FILTER } from '../actions/actionsTypes';
 
 const initialState = {
+    filter: "",
     produtos:
         [
             {
@@ -61,6 +62,13 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 produtos: action.payload
+            }
+        case SET_FILTER:
+            console.log("reducer");
+            console.log(action.payload);
+            return {
+                ...state,
+                filter: action.payload
             }
 
         default:
