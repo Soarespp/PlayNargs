@@ -1,18 +1,23 @@
 .Header{
     display: flex;
+    flex: 1;
     width: 100%;
     margin: 3px;
     background-color: #fffafa; 
     height: 100px;
     border-bottom: 3px groove rgb(70, 130, 180); 
-    /* justify-content: center; */
 }
-.Container-Logo{
+.Header .Container-Logo{
     display: flex;
     height: inherit;
     width: 50%;
     color: black;
     
+}
+
+.link{
+    text-decoration: none;
+    color: black;
 }
 
 .Container-Logo .Logo{
@@ -23,15 +28,36 @@
     display: inline-block;
     text-decoration: none;
 }
-
-.Container-Schearch{
-    display: inline;
-    text-align: right;    
-    width: 50%;
-}
-
-.Container-Schearch .Schearch{
+.Header .Container-Options{
+    display: flex;
+    height: auto;
+    width: auto;
+    margin-left: 320PX;
+    margin-right: 280px;
     margin-top: 70px;
-    padding-right: 150px;
-    margin-right: 20px;
 }
+
+
+.Header .Container-Options .Container-Schearch{
+    display: flex;
+    align-items: center;
+    height: auto;
+    width: auto;
+    padding-bottom: 1px;
+}
+
+.Container-Schearch .text-input{
+    width:300px
+}
+
+.Header .Container-Options .Container-icons{
+    display: flex;
+}
+
+.Header .Container-Options .Container-icons .novo{
+    width: auto;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+

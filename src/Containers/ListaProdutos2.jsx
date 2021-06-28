@@ -3,7 +3,9 @@ import React from 'react';
 import { connect } from "react-redux";
 
 import Card from '../Component/CardSimple';
-import { alteraProduto } from '../store/actions/produtos';
+import { alteraProduto, initialState } from '../store/actions/produtos';
+
+
 
 function clickLike(Arr, Idp) {
     const dados = Arr;
@@ -46,6 +48,7 @@ function getNota(like, dislike) {
     return val;
 };
 
+
 const ListaProtudos = (props) => {
 
     const { produtos, filter } = props;
@@ -67,8 +70,10 @@ const ListaProtudos = (props) => {
                         />
                     ))
             }
-        </div >
+        </div>
+
     )
+
 }
 
 function mapStateToProps(state) {
@@ -84,9 +89,15 @@ function mapDispatchToProp(dispatch) {
             //action creator -> action
             const action = alteraProduto(novoProduto)
             dispatch(action)
+        },
+        initialState() {
+            const action = initialState()
+            dispatch(action)
         }
     }
 }
+
+
 
 export default connect(
     mapStateToProps,

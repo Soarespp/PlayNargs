@@ -1,2 +1,4 @@
 export const PROD_CHANGE = 'PROD_CHANGE';
 export const SET_FILTER = 'SET_FILTER';
+export const INSERT_PRODUCT = 'INSERT_PRODUCT';
+export const INITIAL_STATE = 'INITIAL_STATE';

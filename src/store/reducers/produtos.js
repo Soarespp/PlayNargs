@@ -1,60 +1,26 @@
-import { PROD_CHANGE, SET_FILTER } from '../actions/actionsTypes';
+import { PROD_CHANGE, SET_FILTER, INSERT_PRODUCT, INITIAL_STATE } from '../actions/actionsTypes';
 
-const initialState = {
+var initialState = {
     filter: "",
-    produtos:
-        [
-            {
-                id: 0,
-                name: 'Fambroesa',
-                marca: 'ZOMMO',
-                like: 5,
-                dislike: 0,
-                loja: 'centro'
-            },
-            {
-                id: 1,
-                name: 'Amora',
-                marca: 'ZOMMO',
-                like: 0,
-                dislike: 0,
-                loja: 'centro'
-            },
-            {
-                id: 2,
-                name: 'Fambroesa',
-                marca: 'NELIX',
-                like: 0,
-                dislike: 5,
-                loja: 'Argentina'
-            },
-            {
-                id: 3,
-                name: 'Picole',
-                marca: 'Zommo',
-                like: 3,
-                dislike: 3,
-                loja: 'Argentina'
-            },
-            {
-                id: 4,
-                name: 'Menta',
-                marca: 'Nay',
-                like: 25,
-                dislike: 40,
-                loja: 'Argentina'
-            },
-            {
-                id: 5,
-                name: 'Chiclete',
-                marca: 'NAY',
-                like: 55,
-                dislike: 1,
-                loja: 'Argentina'
-            }
-        ],
+    produtos: [{
+        id: 0,
+        name: 'Fambroesa',
+        brand: 'ZOMMO',
+        like: 0,
+        dislike: 0,
+        place: 'centro',
+        description: 'melhor produto do mundo 1'
+    },
+    {
+        id: 2,
+        name: 'Love 666',
+        brand: 'Daya',
+        like: 0,
+        dislike: 0,
+        place: 'centro',
+        description: 'melhor produto do mundo 1'
+    }]
 }
-
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -64,13 +30,21 @@ export default function (state = initialState, action) {
                 produtos: action.payload
             }
         case SET_FILTER:
-            console.log("reducer");
-            console.log(action.payload);
             return {
                 ...state,
                 filter: action.payload
             }
-
+        case INSERT_PRODUCT:
+            console.log(action.payload)
+            return {
+                ...state,
+                produtos: action.payload
+            }
+        case INITIAL_STATE:
+            return {
+                ...state,
+                produtos: initialState.produtos
+            }
         default:
             return state
     }
