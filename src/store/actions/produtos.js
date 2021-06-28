@@ -1,4 +1,4 @@
-import { PROD_CHANGE, SET_FILTER } from './actionsTypes';
+import { PROD_CHANGE, SET_FILTER, INSERT_PRODUCT, INITIAL_STATE } from './actionsTypes';
 
 export function alteraProduto(novoProduto) {
     return {
@@ -8,10 +8,22 @@ export function alteraProduto(novoProduto) {
 }
 
 export function setFilter(newFilter) {
-    console.log("action");
-    console.log(newFilter);
     return {
         type: SET_FILTER,
         payload: newFilter
+    }
+}
+
+export function insertProduct(newProduct) {
+    return {
+        type: INSERT_PRODUCT,
+        payload: newProduct
+    }
+}
+
+export function initialState(newProduct) {
+    return {
+        type: INITIAL_STATE,
+        payload: newProduct
     }
 }

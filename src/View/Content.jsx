@@ -5,10 +5,10 @@ import {
     Route
 } from "react-router-dom";
 import Home from './Home';
-import Produto from './Produto';
+import CadProduto from './CadProduto';
 import Header from './../Containers/Header';
 
-const Content = props => {
+const Content = (props) => {
     return (
         <div className="App">
             <Header />
@@ -16,7 +16,7 @@ const Content = props => {
                 <div>
                     <Switch>
                         <Route path="/produto">
-                            <Produto />
+                            <CadProduto />
                         </Route>
                         <Route path="/">
                             <Home />
