@@ -11,7 +11,7 @@ function clickLike(Arr, Idp) {
     const dados = Arr;
 
     dados.forEach(item => {
-        if (item.id === Idp) {
+        if (item.idx === Idp) {
             return item.like++
         }
     });
@@ -22,7 +22,7 @@ function clickDisLike(Arr, Idx) {
     const dados = Arr;
 
     dados.forEach((item) => {
-        if (item.id === Idx) {
+        if (item.idx === Idx) {
             return item.dislike++;
         }
     })
@@ -55,7 +55,7 @@ const ListaProtudos = (props) => {
     const lstProduto = produtos.slice();
     const regex = new RegExp(`^(.*)${filter}(.*)$`, "ig");
 
-    lstProduto.sort((a, b) => { return getNota(b.like, b.dislike) - getNota(a.like, a.dislike) });
+    lstProduto.sort((a, b) => { return getNota(b.like, b.dislike) - getNota(a.like, a.dislike) || a.name });
     return (
         <div className="ListaProdutos" >
             {lstProduto.length &&
@@ -65,8 +65,8 @@ const ListaProtudos = (props) => {
                         <Card produto={produto}
                             position={idx}
                             nota={getNota(produto.like, produto.dislike)}
-                            clickLike={() => props.setProdutos(clickLike(lstProduto, produto.id))}
-                            clickDisLike={() => props.setProdutos(clickDisLike(lstProduto, produto.id))}
+                            clickLike={() => props.setProdutos(clickLike(lstProduto, produto.idx))}
+                            clickDisLike={() => props.setProdutos(clickDisLike(lstProduto, produto.idx))}
                         />
                     ))
             }

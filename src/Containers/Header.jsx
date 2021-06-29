@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import CadProductDrawer from '../View/CadProductDrawer';
 
-import { setFilter, alteraProduto } from '../store/actions/produtos';
+import { setFilter } from '../store/actions/produtos';
 import { createFromIconfontCN } from '@ant-design/icons';
 
 
@@ -19,36 +19,19 @@ const IconFont = createFromIconfontCN({
 });
 
 const Header = (props) => {
-    const { produtos, filter } = props;
+    const { filter } = props;
 
-    function AddProduto() {
-        const lstProdutos = produtos.slice();
-        lstProdutos.push({
-            id: 1,
-            name: 'Morango',
-            brand: 'ZOMMO',
-            like: 0,
-            dislike: 0,
-            place: 'centro',
-            description: 'melhor produto do mundo 1'
-        });
-        console.log(lstProdutos);
-        props.addProduct(lstProdutos);
-    }
+
     return (
         < div className="Header">
             <div className="Container-Logo">
                 <a className="Logo" href="/" >Play Nargs</a>
             </div>
             <div className="Container-Options">
-
                 <div className="Container-Schearch">
-
                     <Input className={"text-input"} placeholder="Pesquisa Loja"
                         value={filter}
                         onChange={e => {
-                            console.log(filter)
-                            console.log("header-filter")
                             props.filterProduct(e.target.value)
                         }}
                     />
@@ -79,12 +62,6 @@ function mapDispatchToProp(dispatch) {
         filterProduct(newFilter) {
             //action creator -> action
             const action = setFilter(newFilter)
-            dispatch(action)
-        },
-        addProduct(newFilter) {
-            console.log("insert prod")
-            //action creator -> action
-            const action = alteraProduto(newFilter)
             dispatch(action)
         }
     }

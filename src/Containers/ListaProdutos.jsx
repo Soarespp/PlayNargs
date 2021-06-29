@@ -59,27 +59,12 @@ const Produtos = [
 class ListaProtudos extends Component {
     state = {};
 
-    clickIncluir = (dados) => {
-        const lstProtudos = dados;
-
-        lstProtudos.push({
-            name: 'Pedro' + parseInt(Math.random() * (10000)),
-            marca: 'Pedro',
-            nota: parseInt(Math.random() * (10)),
-            loja: 'Argentina'
-        });
-
-        this.setState({
-            Produtos: lstProtudos
-        });
-    };
 
     clickLike = (Arr, Idp) => {
-        console.log(Arr);
         const dados = Arr;
 
         dados.forEach(item => {
-            if (item.id === Idp) {
+            if (item.idx === Idp) {
                 return item.like++
             }
         });
@@ -93,7 +78,7 @@ class ListaProtudos extends Component {
         const dados = Arr;
 
         dados.forEach((item) => {
-            if (item.id === Idx) {
+            if (item.idx === Idx) {
                 return item.dislike++;
             }
         })
@@ -132,8 +117,8 @@ class ListaProtudos extends Component {
                     <Card produto={produto}
                         position={idx}
                         nota={this.getNota(produto.like, produto.dislike)}
-                        clickLike={() => this.clickLike(lstProduto, produto.id)}
-                        clickDisLike={() => this.clickDisLike(lstProduto, produto.id)}
+                        clickLike={() => this.clickLike(lstProduto, produto.idx)}
+                        clickDisLike={() => this.clickDisLike(lstProduto, produto.idx)}
                     />
                 ))
                 }

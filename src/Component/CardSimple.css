@@ -10,11 +10,14 @@
     display: flex;
     height: inherit;
 }
+.Container .Container-data{
+    width: 95%;
+}
 .Data{
     flex: 1;
-    display: inline-flex;
+    display: flex;
     padding-left: 10px;
-    width: 50%;
+    padding-right: 15px;
     color: #030303;
 }
 .Title{
@@ -30,10 +33,10 @@
     text-align: right;
 }
 .Controler{
-    display: flow-root;
-    padding-right: 5px;
+    display: flexbox;
+    padding-left: 15px;
+    padding-top: 10px;
     text-align: right;
-    width: 50%;
     margin: 10px;
     height: inherit;
     color: black;
