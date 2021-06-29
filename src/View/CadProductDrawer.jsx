@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -11,19 +11,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import { connect } from "react-redux";
-import { insertProduct } from '../store/actions/produtos';
-
-
-
-const Produto = {
-    id: 0,
-    name: "Teste Novo Prod",
-    brand: 'Nova Marca',
-    like: 0,
-    dislike: 0,
-    place: 'Fabrica',
-    description: 'melhor produto do mundo'
-};
+import { insertProduct, changeProductState } from '../store/actions/produtos';
 
 const drawerWidth = 440;
 
@@ -88,38 +76,74 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function getIdMax(lstProd) {
-    lstProd.sort((a, b) => { return (b.id - a.id) });
-    return lstProd[0].id++;
+const getIdMax = (lstProd) => {
+    console.log("getmax")
+    const intertLstProd = lstProd.slice();
+    intertLstProd.sort((a, b) => { return (b.idx - a.idx) });
+    return intertLstProd[0].idx;
 }
 
-
-
 const CadProductDrawer = (props) => {
+    const { produtos, stateCadProduct, stateProd, newProduct } = props;
+
     const classes = useStyles();
     const theme = useTheme();
 
     const [open, setOpen] = useState(false);
-    var [produto, setProduto] = useState(Produto);
-
-    const { produtos } = props;
-
+    var [produto, setProduto] = useState(stateProd);
+    const [stateControle, setStateControle] = useState("B");
 
 
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
+    const { changeStateProduct } = props;
 
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
+    function MudarStateProduct(st, prod) {
+        setProduto(prod);
+        changeStateProduct(st, prod);
+    }
 
-    function SalvarProduto(Arr, produto) {
+    function incluirProduto(Arr, produtoEdt) {
+        var id = getIdMax(produtos);
+        id++;
         const lstProd = Arr.slice();
-        setProduto = { ...produto.id = getIdMax(Arr) };
-        lstProd.push(produto);
+        const prd2 = produtoEdt;
+        prd2.idx = id;
+        lstProd.push(prd2);
         props.addProduct(lstProd);
-        handleDrawerClose();
+    }
+
+    function updateProduct(Arr, produtoEdt) {
+        var lstProd = Arr.slice();
+
+        lstProd.forEach((item, idx) => {
+            if (item.idx === produtoEdt.idx) {
+                lstProd[idx] = produtoEdt
+            }
+        });
+        props.addProduct(lstProd);
+    }
+
+    function SalvarProduto(Arr, produtoEdt) {
+        if (produtoEdt.name === newProduct.name) {
+            cancelarEditProd();
+        } else if (stateControle === "I") {
+            incluirProduto(Arr, produtoEdt);
+        }
+        else if (stateControle === "U") {
+            updateProduct(Arr, produtoEdt);
+        }
+        setStateControle("B");
+        MudarStateProduct(false, newProduct);
+    }
+
+    function excluirProduto(Arr, produtoEdt) {
+        var lstProd = Arr.slice();
+        lstProd.forEach((item, idx) => {
+            if (item.idx === produtoEdt.idx) {
+                lstProd.splice(idx, 1);
+            }
+        });
+        props.addProduct(lstProd);
+        MudarStateProduct(false, newProduct);
     }
 
     const handleChange = (idName) => action => {
@@ -132,9 +156,25 @@ const CadProductDrawer = (props) => {
 
 
     const novoProduto = () => {
-        setProduto(Produto);
-        handleDrawerOpen();
+        MudarStateProduct(true, newProduct);
+        setStateControle("I");
     }
+
+    const cancelarEditProd = () => {
+        setStateControle("B");
+        MudarStateProduct(false, newProduct);
+    }
+
+    useEffect(() => {
+        if ((stateProd !== undefined) && (stateProd.idx !== -1)) {
+            if (stateProd.idx !== produto.idx) {
+                MudarStateProduct(true, stateProd);
+                setStateControle("U");
+            }
+        }
+        setOpen(stateCadProduct);
+    }
+    );
 
     return (
         <div>
@@ -160,13 +200,13 @@ const CadProductDrawer = (props) => {
                     }}
                 >
                     <div className={classes.drawerHeader}>
-                        <IconButton onClick={handleDrawerClose}>
+                        <IconButton onClick={() => changeStateProduct(false)}>
                             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                         </IconButton>
                     </div>
                     <Divider />
                     <div className="cadastroProd">
-                        <p>Id: {produto.id} </p>
+                        <p>Id: {produto.idx} </p>
                         <p>Nome: </p>
                         <input
                             className="input"
@@ -191,7 +231,8 @@ const CadProductDrawer = (props) => {
                     <Divider />
                     <div className="controle">
                         <button onClick={() => SalvarProduto(produtos, produto)}>Salvar</button>
-                        <button onClick={handleDrawerClose}>Cancelar</button>
+                        <button onClick={cancelarEditProd}>Cancelar</button>
+                        <button onClick={() => excluirProduto(produtos, produto)}>Excluir</button>
                     </div>
                     <Divider />
                 </Drawer>
@@ -203,7 +244,10 @@ const CadProductDrawer = (props) => {
 
 function mapStateToProps(state) {
     return {
-        produtos: state.dados.produtos
+        produtos: state.dados.produtos,
+        stateCadProduct: state.dados.cadProduct,
+        stateProd: state.dados.produto,
+        newProduct: state.dados.newProduct
     };
 }
 function mapDispatchToProp(dispatch) {
@@ -211,6 +255,11 @@ function mapDispatchToProp(dispatch) {
         addProduct(newFilter) {
             //action creator -> action
             const action = insertProduct(newFilter)
+            dispatch(action)
+        },
+        changeStateProduct(stateProd) {
+            //action creator -> action
+            const action = changeProductState(stateProd)
             dispatch(action)
         }
     }
