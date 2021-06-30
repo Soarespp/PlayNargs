@@ -8,12 +8,12 @@ import {
 
 const newProductbkp = {
     idx: -1,
-    name: "Teste Novo Prod",
-    brand: 'Nova Marca',
+    name: "",
+    brand: "",
     like: 0,
     dislike: 0,
-    place: 'Fabrica',
-    description: 'melhor produto do mundo'
+    place: "",
+    description: ""
 };
 
 var initialState = {
