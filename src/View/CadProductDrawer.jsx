@@ -178,7 +178,7 @@ const CadProductDrawer = (props) => {
 
     return (
         <div>
-            <div>
+            <div className="bottop">
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"

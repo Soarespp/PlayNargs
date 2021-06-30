@@ -29,7 +29,7 @@ const Header = (props) => {
             </div>
             <div className="Container-Options">
                 <div className="Container-Schearch">
-                    <Input className={"text-input"} placeholder="Pesquisa Loja"
+                    <Input className={"text-input"} placeholder="Pesquisa Lojas"
                         value={filter}
                         onChange={e => {
                             props.filterProduct(e.target.value)
@@ -37,12 +37,12 @@ const Header = (props) => {
                     />
                 </div>
                 <div className="Container-icons">
-                    <div className="novo">
+                    {/* <div className="novo1">
                         <a className="link" href="/produto" >
                             <IconFont type="icon-java" />
                         </a>
-                    </div>
-                    <div className="novo">
+                    </div> */}
+                    <div className="novo2">
                         <CadProductDrawer />
                     </div>
                 </div>
