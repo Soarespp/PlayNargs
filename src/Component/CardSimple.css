@@ -6,11 +6,12 @@
     flex-direction: column;
     
 } 
-.Container{
+.Container-card{
     display: flex;
     height: inherit;
+    width: 100%;
 }
-.Container .Container-data{
+.Container-card .Container-data{
     width: 95%;
 }
 .Data{
@@ -32,6 +33,9 @@
     font-size: 15px;
     text-align: right;
 }
+.Container-Controler{
+    display: flex;
+}
 .Controler{
     display: flexbox;
     padding-left: 15px;
@@ -40,9 +44,11 @@
     margin: 10px;
     height: inherit;
     color: black;
+
 }
 .Controler .Like{
     height: 50%;
+    
 }
 
 .Controler .Dislike{

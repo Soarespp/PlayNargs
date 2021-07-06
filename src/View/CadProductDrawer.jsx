@@ -77,7 +77,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const getIdMax = (lstProd) => {
-    console.log("getmax")
     const intertLstProd = lstProd.slice();
     intertLstProd.sort((a, b) => { return (b.idx - a.idx) });
     return intertLstProd[0].idx;
@@ -175,7 +174,6 @@ const CadProductDrawer = (props) => {
         setOpen(stateCadProduct);
     }
     );
-
     return (
         <div>
             <div className="bottop">

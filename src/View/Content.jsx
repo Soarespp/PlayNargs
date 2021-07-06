@@ -5,6 +5,7 @@ import {
     Route
 } from "react-router-dom";
 import Home from './Home';
+import AuthOrApp from './authOrApp';
 import CadProduto from './CadProduto';
 import Header from './../Containers/Header';
 
@@ -18,8 +19,11 @@ const Content = (props) => {
                         <Route path="/produto">
                             <CadProduto />
                         </Route>
-                        <Route path="/">
+                        <Route path="/teste">
                             <Home />
+                        </Route>
+                        <Route path="/">
+                            <AuthOrApp />
                         </Route>
                     </Switch>
                 </div>

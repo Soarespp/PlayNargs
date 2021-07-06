@@ -14,7 +14,7 @@ function getPosition(props) {
 
 
 const CardSimple = (props) => {
-    const { produto, nota, clickLike, clickDisLike, stateChange } = props;
+    const { produto, nota, clickLike, clickDisLike, stateChange, auth } = props;
 
     const productChange = () => {
         stateChange(true, produto);
@@ -23,7 +23,7 @@ const CardSimple = (props) => {
     return (
         <div className="Card">
             <div className={`CardSimple ${getPosition(props)}`}>
-                <div className="Container">
+                <div className="Container-card">
                     <div className="Container-data"
                         onClick={() => { productChange() }}>
                         <div className="Data">
@@ -38,10 +38,15 @@ const CardSimple = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="Controler">
-                        <div className="Like"><LikeOutlined onClick={clickLike} /></div>
-                        <div className="Dislike"><DislikeOutlined onClick={clickDisLike} /></div>
-                    </div>
+                    {!auth.loginAnonimo ?
+                        (
+                            <div className="Container-Controler">
+                                <div className="Controler">
+                                    <div className="Like"><LikeOutlined onClick={clickLike} /></div>
+                                    <div className="Dislike"><DislikeOutlined onClick={clickDisLike} /></div>
+                                </div>
+                            </div>
+                        ) : null}
                 </div>
             </div >
         </div >
@@ -51,7 +56,8 @@ const CardSimple = (props) => {
 function mapStateToProps(state) {
     return {
         produtos: state.dados.produtos,
-        cadProduct: state.dados.cadProduct
+        cadProduct: state.dados.cadProduct,
+        auth: state.auth,
     };
 }
 function mapDispatchToProp(dispatch) {

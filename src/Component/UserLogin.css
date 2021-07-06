@@ -1,0 +1,60 @@
+.dropdown{
+    position: fixed;
+    width: 200px;
+    top: 30px;
+    left: 80%;
+    transform: translate(-50%, 50%);
+    border: 1px solid;
+    padding: 1px;
+    background-color: #add8e6!important;
+    border: 2px groove #4682b4; border-radius: 8px
+}
+
+.dropdown-menu{
+    list-style-type: none;
+    text-align: left;
+    padding-left: 5px;
+}
+
+
+.user-header{
+    width: 100%;
+    padding-right: 10px;
+}
+.user-header p{
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;              
+
+  text-overflow:    ellipsis;
+}
+
+.dropdown-toggle{
+    width: 60%;
+}
+
+.container-userlogin-title{
+  width: 100%;
+  display: flex;
+}
+
+a{
+  white-space: nowrap;
+  overflow: hidden;              
+
+  text-overflow:    ellipsis;
+}
+
+.dropdown-toggle span{
+  white-space: nowrap;
+  overflow: hidden;              
+
+  text-overflow:    ellipsis;
+}
+
+.profile {
+  margin-left: 10px;
+	border-radius: 5px;
+  height: 30%;
+  width: 30%;
+}
