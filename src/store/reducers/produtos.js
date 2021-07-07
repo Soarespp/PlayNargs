@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import {
     PROD_CHANGE,
     SET_FILTER,
@@ -13,7 +14,8 @@ const newProductbkp = {
     like: 0,
     dislike: 0,
     place: "",
-    description: ""
+    description: "",
+    userCad: ""
 };
 
 var initialState = {
@@ -29,7 +31,8 @@ var initialState = {
         like: 0,
         dislike: 0,
         place: 'centro',
-        description: 'melhor produto do mundo 1'
+        description: 'melhor produto do mundo 1',
+        userCad:"pedropaulo@gmail.com"
     },
     {
         idx: 1,
@@ -38,7 +41,8 @@ var initialState = {
         like: 0,
         dislike: 0,
         place: 'centro',
-        description: 'melhor produto do mundo 1'
+        description: 'melhor produto do mundo 1',
+        userCad:"pedropauloosoares@gmail.com"
     }]
 };
 
