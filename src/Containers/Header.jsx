@@ -9,7 +9,6 @@ import { setFilter } from '../store/actions/produtos';
 
 import UserLogin from '../Component/UserLogin';
 import { useEffect } from 'react';
-import logout from '../store/actions/authActions';
 
 const Header = (props) => {
     const { filter, auth } = props;
@@ -33,7 +32,7 @@ const Header = (props) => {
                 {logado ? (
                     <div className="Container-Options" >
                         <div className="Container-Schearch">
-                            <Input className={"text-input"} placeholder="Pesquisa Lojas"
+                            <Input placeholder="Pesquisa Lojas"
                                 value={filter}
                                 onChange={e => {
                                     props.filterProduct(e.target.value)
@@ -41,11 +40,6 @@ const Header = (props) => {
                             />
                         </div>
                         <div className="Container-icons">
-                            {/* <div className="novo1">
-                        <a className="link" href="/produto" >
-                            <IconFont type="icon-java" />
-                        </a>
-                    </div> */}
                             <div className="novo1">
                                 <UserLogin />
                             </div>

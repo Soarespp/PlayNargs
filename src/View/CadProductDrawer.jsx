@@ -41,11 +41,11 @@ const useStyles = makeStyles((theme) => ({
         display: 'none',
     },
     drawer: {
-        width: drawerWidth,
+        width: `100%`, //drawerWidth,
         flexShrink: 0,
     },
     drawerPaper: {
-        width: drawerWidth,
+        width: `20%`, //drawerWidth,
         padding: 15,
         background: 'linear-gradient(45deg, #add8e6 30%, #fafdfe 80%)',
     },
@@ -83,15 +83,17 @@ const getIdMax = (lstProd) => {
 }
 
 const CadProductDrawer = (props) => {
-    const { produtos, stateCadProduct, stateProd, newProduct } = props;
+    const { produtos, stateCadProduct, stateProd, newProduct, auth } = props;
 
     const classes = useStyles();
     const theme = useTheme();
 
     const [open, setOpen] = useState(false);
+    const [usuValido, setUsuValido] = useState(false);
     var [produto, setProduto] = useState(stateProd);
     const [stateControle, setStateControle] = useState("B");
 
+    console.log('props', props)
 
     const { changeStateProduct } = props;
 
@@ -106,6 +108,9 @@ const CadProductDrawer = (props) => {
         const lstProd = Arr.slice();
         const prd2 = produtoEdt;
         prd2.idx = id;
+        if (auth.user.email !== null) {
+            prd2.userCad = auth.user.email;
+        }
         lstProd.push(prd2);
         props.addProduct(lstProd);
     }
@@ -171,6 +176,11 @@ const CadProductDrawer = (props) => {
                 setStateControle("U");
             }
         }
+
+
+        setUsuValido((props.auth.user !== null) && (produto.userCad === props.auth.user.email))
+
+
         setOpen(stateCadProduct);
     }
     );
@@ -230,7 +240,11 @@ const CadProductDrawer = (props) => {
                     <div className="controle">
                         <button onClick={() => SalvarProduto(produtos, produto)}>Salvar</button>
                         <button onClick={cancelarEditProd}>Cancelar</button>
-                        <button onClick={() => excluirProduto(produtos, produto)}>Excluir</button>
+                        {((props.auth.user !== null) && (produto.userCad === props.auth.user.email)) ?
+                            (
+                                <button onClick={() => excluirProduto(produtos, produto)}>Excluir</button>
+                            )
+                            : null}
                     </div>
                     <Divider />
                 </Drawer>
@@ -245,7 +259,8 @@ function mapStateToProps(state) {
         produtos: state.dados.produtos,
         stateCadProduct: state.dados.cadProduct,
         stateProd: state.dados.produto,
-        newProduct: state.dados.newProduct
+        newProduct: state.dados.newProduct,
+        auth: state.auth
     };
 }
 function mapDispatchToProp(dispatch) {
