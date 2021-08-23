@@ -15,11 +15,12 @@ const Header = (props) => {
     const [logado, setLogado] = useState(true);
 
     useEffect(() => {
-        if ((auth.user == null) || (auth.loginAnonimo === true)) {
-            setLogado(false);
-        } else {
-            setLogado(true);
-        }
+        // if ((auth.user == null) || (auth.loginAnonimo === true)) {
+        //     setLogado(false);
+        // } else {
+        //     setLogado(true);
+        // }
+        setLogado(true)
     })
     return (
         < div className="Header">

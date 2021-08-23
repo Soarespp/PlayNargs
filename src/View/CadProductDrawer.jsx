@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
+import ListColapse from '../Component/listColapse';
 
 
 import Divider from '@material-ui/core/Divider';
@@ -12,6 +13,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import { connect } from "react-redux";
 import { insertProduct, changeProductState } from '../store/actions/produtos';
+
+import { ValidateProduct } from '../Component/functions/Validates';
 
 const drawerWidth = 440;
 
@@ -83,6 +86,7 @@ const getIdMax = (lstProd) => {
 }
 
 const CadProductDrawer = (props) => {
+
     const { produtos, stateCadProduct, stateProd, newProduct, auth } = props;
 
     const classes = useStyles();
@@ -93,13 +97,14 @@ const CadProductDrawer = (props) => {
     var [produto, setProduto] = useState(stateProd);
     const [stateControle, setStateControle] = useState("B");
 
-    console.log('props', props)
-
     const { changeStateProduct } = props;
 
     function MudarStateProduct(st, prod) {
+        console.log('MudarStateProduct ', prod)
+
         setProduto(prod);
         changeStateProduct(st, prod);
+
     }
 
     function incluirProduto(Arr, produtoEdt) {
@@ -129,7 +134,10 @@ const CadProductDrawer = (props) => {
     function SalvarProduto(Arr, produtoEdt) {
         if (produtoEdt.name === newProduct.name) {
             cancelarEditProd();
-        } else if (stateControle === "I") {
+        } else if (ValidateProduct(Arr, produtoEdt, 'name')) {
+            cancelarEditProd();
+        }
+        else if (stateControle === "I") {
             incluirProduto(Arr, produtoEdt);
         }
         else if (stateControle === "U") {
@@ -170,17 +178,24 @@ const CadProductDrawer = (props) => {
     }
 
     useEffect(() => {
+        console.log('useEffect product')
         if ((stateProd !== undefined) && (stateProd.idx !== -1)) {
             if (stateProd.idx !== produto.idx) {
+                console.log('effet drawer', stateProd)
                 MudarStateProduct(true, stateProd);
                 setStateControle("U");
             }
         }
 
-
+        if (stateProd !== undefined) {
+            var is_same = (produto.places.length == stateProd.places.length) && produto.places.every(function (element, index) {
+                return element === stateProd.places[index];
+            });
+            console.log('is_same', is_same)
+            console.log('produto.places', produto.places)
+            console.log('stateProd.places', stateProd.places)
+        }
         setUsuValido((props.auth.user !== null) && (produto.userCad === props.auth.user.email))
-
-
         setOpen(stateCadProduct);
     }
     );
@@ -230,6 +245,7 @@ const CadProductDrawer = (props) => {
                         <input className="input" value={produto.place}
                             onChange={handleChange("place")}
                         />
+                        <ListColapse titulo="Lojas" dataGrid={produto.places} />
                         <p>Informações: </p>
                         <textarea className="memo"
                             value={produto.description}
@@ -270,9 +286,9 @@ function mapDispatchToProp(dispatch) {
             const action = insertProduct(newFilter)
             dispatch(action)
         },
-        changeStateProduct(stateProd) {
+        changeStateProduct(stateProd, prod) {
             //action creator -> action
-            const action = changeProductState(stateProd)
+            const action = changeProductState(stateProd, prod)
             dispatch(action)
         }
     }

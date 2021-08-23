@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Card from '../Component/CardSimple';
 import { alteraProduto, initialState } from '../store/actions/produtos';
 
+// import { GroupBy } from '../Component/functions/GroupBy';
 
 
 function clickLike(Arr, Idp) {
@@ -48,12 +49,13 @@ function getNota(like, dislike) {
     return val;
 };
 
-
 const ListaProtudos = (props) => {
 
     const { produtos, filter } = props;
-    const lstProduto = produtos.slice();
     const regex = new RegExp(`^(.*)${filter}(.*)$`, "ig");
+
+    const lstProduto = produtos.slice();
+    // var groupDados = GroupBy('name', lstProduto);
 
     lstProduto.sort((a, b) => { return getNota(b.like, b.dislike) - getNota(a.like, a.dislike) || a.name });
     return (

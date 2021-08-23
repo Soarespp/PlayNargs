@@ -1,0 +1,25 @@
+0:
+comics: {available: 12, collectionURI: "http://gateway.marvel.com/v1/public/characters/1011334/comics", items: Array(12), returned: 12}
+description: ""
+events: {available: 1, collectionURI: "http://gateway.marvel.com/v1/public/characters/1011334/events", items: Array(1), returned: 1}
+id: 1011334
+modified: "2014-04-29T14:18:17-0400"
+name: "3-D Man"
+resourceURI: "http://gateway.marvel.com/v1/public/characters/1011334"
+series:
+available: 3
+collectionURI: "http://gateway.marvel.com/v1/public/characters/1011334/series"
+items: Array(3)
+0:
+name: "Avengers: The Initiative (2007 - 2010)"
+resourceURI: "http://gateway.marvel.com/v1/public/series/1945"
+[[Prototype]]: Object
+1: {resourceURI: "http://gateway.marvel.com/v1/public/series/2005", name: "Deadpool (1997 - 2002)"}
+2: {resourceURI: "http://gateway.marvel.com/v1/public/series/2045", name: "Marvel Premiere (1972 - 1981)"}
+length: 3
+[[Prototype]]: Array(0)
+returned: 3
+[[Prototype]]: Object
+stories: {available: 21, collectionURI: "http://gateway.marvel.com/v1/public/characters/1011334/stories", items: Array(20), returned: 20}
+thumbnail: {path: "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784", extension: "jpg"}
+urls: (3) [{…}, {…}, {…}]
