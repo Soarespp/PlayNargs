@@ -3,7 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import Home from './Home';
+import Home from './Home/Home';
 import Auth from '../auth/auth'
 import { validateToken } from '../store/actions/authActions'
 

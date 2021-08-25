@@ -1,4 +1,3 @@
-import { dispatch } from 'react-redux';
 import { TOKEN_VALIDATED, USER_FETCHED_ANONIMO, USER_FETCHED } from './actionsTypes';
 
 export function login(values) {

@@ -11,7 +11,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import { connect } from "react-redux";
-import { insertProduct, changeProductState } from '../store/actions/produtos';
+import { bindActionCreators } from 'redux';
+import * as actionsProduto from '../../store/actions/produtos';
 
 const drawerWidth = 440;
 
@@ -76,78 +77,54 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const getIdMax = (lstProd) => {
+const getIdMax = (lstProd, type) => {
     const intertLstProd = lstProd.slice();
     intertLstProd.sort((a, b) => { return (b.idx - a.idx) });
     return intertLstProd[0].idx;
 }
 
 const CadProductDrawer = (props) => {
-    const { produtos, stateCadProduct, stateProd, newProduct, auth } = props;
+    const { produtos, changeIdProduct, idProduto, newProduct, auth } = props;
 
     const classes = useStyles();
     const theme = useTheme();
 
     const [open, setOpen] = useState(false);
-    const [usuValido, setUsuValido] = useState(false);
-    var [produto, setProduto] = useState(stateProd);
+    var [produto, setProduto] = useState(newProduct);
     const [stateControle, setStateControle] = useState("B");
 
-    console.log('props', props)
-
-    const { changeStateProduct } = props;
-
-    function MudarStateProduct(st, prod) {
-        setProduto(prod);
-        changeStateProduct(st, prod);
+    const getDadosProduto = (idInt) => {
+        var prodInt = produtos.find(prod => prod.idx === idInt)
+        console.log('prodInt', prodInt)
+        return prodInt
     }
 
-    function incluirProduto(Arr, produtoEdt) {
-        var id = getIdMax(produtos);
+    function incluirProduto(produtoEdt) {
+        var id = getIdMax(produtos, produtoEdt.type);
         id++;
-        const lstProd = Arr.slice();
         const prd2 = produtoEdt;
         prd2.idx = id;
         if (auth.user.email !== null) {
             prd2.userCad = auth.user.email;
         }
-        lstProd.push(prd2);
-        props.addProduct(lstProd);
+        props.insertProduct(prd2);
     }
 
-    function updateProduct(Arr, produtoEdt) {
-        var lstProd = Arr.slice();
-
-        lstProd.forEach((item, idx) => {
-            if (item.idx === produtoEdt.idx) {
-                lstProd[idx] = produtoEdt
-            }
-        });
-        props.addProduct(lstProd);
+    function updateProduct(produtoEdt) {
+        props.updateProduct(produtoEdt);
     }
 
-    function SalvarProduto(Arr, produtoEdt) {
-        if (produtoEdt.name === newProduct.name) {
-            cancelarEditProd();
-        } else if (stateControle === "I") {
-            incluirProduto(Arr, produtoEdt);
-        }
-        else if (stateControle === "U") {
-            updateProduct(Arr, produtoEdt);
-        }
-        setStateControle("B");
-        MudarStateProduct(false, newProduct);
+    function SalvarProduto(produtoEdt) {
+        if (stateControle === 'I') {
+            incluirProduto(produtoEdt);
+        } else
+            updateProduct(produtoEdt);
+        cancelarEditProd();
     }
 
-    function excluirProduto(Arr, produtoEdt) {
-        var lstProd = Arr.slice();
-        lstProd.forEach((item, idx) => {
-            if (item.idx === produtoEdt.idx) {
-                lstProd.splice(idx, 1);
-            }
-        });
-        props.addProduct(lstProd);
-        MudarStateProduct(false, newProduct);
+    function excluirProduto(produtoEdt) {
+        props.deleteProduct(produtoEdt);
+        cancelarEditProd();
     }
 
     const handleChange = (idName) => action => {
@@ -160,30 +137,30 @@ const CadProductDrawer = (props) => {
 
 
     const novoProduto = () => {
-        MudarStateProduct(true, newProduct);
-        setStateControle("I");
+        console.log('novoProduto')
+        setStateControle('I');
     }
 
     const cancelarEditProd = () => {
+        changeIdProduct(-1);
+        setProduto(newProduct);
         setStateControle("B");
-        MudarStateProduct(false, newProduct);
     }
 
     useEffect(() => {
-        if ((stateProd !== undefined) && (stateProd.idx !== -1)) {
-            if (stateProd.idx !== produto.idx) {
-                MudarStateProduct(true, stateProd);
-                setStateControle("U");
+        console.log('useEffect iProduto', idProduto, '=', stateControle)
+        if ((idProduto === -1) && (stateControle === 'I')) {
+            setOpen(true)
+        } else if (idProduto !== -1) {
+            if (idProduto !== produto.idx) {
+                setProduto(getDadosProduto(idProduto))
             }
+            setOpen(true)
         }
+        else
+            setOpen(false)
+    }, [setOpen, getDadosProduto, idProduto, produto.idx, stateControle]);
 
-
-        setUsuValido((props.auth.user !== null) && (produto.userCad === props.auth.user.email))
-
-
-        setOpen(stateCadProduct);
-    }
-    );
     return (
         <div>
             <div className="bottop">
@@ -208,7 +185,9 @@ const CadProductDrawer = (props) => {
                     }}
                 >
                     <div className={classes.drawerHeader}>
-                        <IconButton onClick={() => changeStateProduct(false)}>
+                        <IconButton
+                            onClick={() => cancelarEditProd()}
+                        >
                             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                         </IconButton>
                     </div>
@@ -235,14 +214,24 @@ const CadProductDrawer = (props) => {
                             value={produto.description}
                             onChange={handleChange("description")}
                         />
+                        <div onChange={handleChange("type")}>
+                            <input type="radio" value="juice" name="gender" checked={produto.type === 'juice'} /> Juice
+                            <input type="radio" value="nargs" name="gender" checked={produto.type === 'nargs'} /> Nargs
+                        </div>
                     </div>
                     <Divider />
                     <div className="controle">
-                        <button onClick={() => SalvarProduto(produtos, produto)}>Salvar</button>
-                        <button onClick={cancelarEditProd}>Cancelar</button>
+                        <button
+                            onClick={() => SalvarProduto(produto)}
+                        >Salvar</button>
+                        <button
+                            onClick={() => cancelarEditProd()}
+                        >Cancelar</button>
                         {((props.auth.user !== null) && (produto.userCad === props.auth.user.email)) ?
                             (
-                                <button onClick={() => excluirProduto(produtos, produto)}>Excluir</button>
+                                <button
+                                    onClick={() => excluirProduto(produto)}
+                                >Excluir</button>
                             )
                             : null}
                     </div>
@@ -258,25 +247,13 @@ function mapStateToProps(state) {
     return {
         produtos: state.dados.produtos,
         stateCadProduct: state.dados.cadProduct,
-        stateProd: state.dados.produto,
+        idProduto: state.dados.idProduto,
         newProduct: state.dados.newProduct,
         auth: state.auth
     };
 }
-function mapDispatchToProp(dispatch) {
-    return {
-        addProduct(newFilter) {
-            //action creator -> action
-            const action = insertProduct(newFilter)
-            dispatch(action)
-        },
-        changeStateProduct(stateProd) {
-            //action creator -> action
-            const action = changeProductState(stateProd)
-            dispatch(action)
-        }
-    }
-}
+
+const mapDispatchToProp = (dispatch) => bindActionCreators(actionsProduto, dispatch)
 
 export default connect(
     mapStateToProps,

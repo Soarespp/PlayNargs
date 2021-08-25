@@ -1,6 +1,6 @@
 import './auth.css'
 import React, { Component } from 'react'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 
 import { login, loginAnonimo } from '../store/actions/authActions'

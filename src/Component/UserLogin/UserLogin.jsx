@@ -6,17 +6,11 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { connect } from "react-redux";
 
 //navBar
-import { logout } from '../store/actions/authActions';
+import { logout } from '../../store/actions/authActions';
 
 const UserLogin = (props) => {
     const [open, setOpen] = useState(false);
-    // const [user, setUser] = useState(props.user)
     const { user } = props;
-
-    const handleClick = () => {
-        setOpen((prev) => !prev);
-    };
-
     const handleClickAway = () => {
         setOpen(false);
     };
@@ -36,7 +30,7 @@ const UserLogin = (props) => {
                                     <ul className="dropdown-menu">
                                         <li onMouseLeave={() => handleClickAway()} >
                                             <div className="container-userlogin-title">
-                                                <a href="javascript:;" onClick={() => handleClickAway()}
+                                                <a href="/#" onClick={() => handleClickAway()}
                                                     aria-expanded={open ? 'true' : 'false'}
                                                     className="dropdown-toggle"
                                                     data-toggle="dropdown">
@@ -50,7 +44,7 @@ const UserLogin = (props) => {
                                                 </li>
                                                 <li className="user-footer">
                                                     <div className="pull-right">
-                                                        <a href="#" onClick={props.logout}
+                                                        <a href="/#" onClick={props.logout}
                                                             className="btn btn-default btn-flat">Sair</a>
                                                     </div>
                                                 </li>

@@ -9,7 +9,7 @@ const INITIAL_STATE = {
     profileObj: {}
 }
 
-export default (state = INITIAL_STATE, action) => {
+const authReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case TOKEN_VALIDATED:
             if (action.payload) {
@@ -31,7 +31,6 @@ export default (state = INITIAL_STATE, action) => {
                 validToken: true,
                 profileObj: action.payload.profileObj
             }
-
         case USER_FETCHED_ANONIMO:
             return {
                 ...state,
@@ -48,3 +47,5 @@ export default (state = INITIAL_STATE, action) => {
             return state
     }
 }
+
+export default authReducer;

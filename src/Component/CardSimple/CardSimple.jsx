@@ -3,7 +3,8 @@ import React from 'react';
 import { DislikeOutlined, LikeOutlined } from '@ant-design/icons';
 
 import { connect } from "react-redux";
-import { insertProduct, changeProductState } from '../store/actions/produtos';
+import { bindActionCreators } from 'redux';
+import * as actionsProduto from '../../store/actions/produtos';
 
 function getPosition(props) {
     if (props.position === 0) return "First"
@@ -14,18 +15,14 @@ function getPosition(props) {
 
 
 const CardSimple = (props) => {
-    const { produto, nota, clickLike, clickDisLike, stateChange, auth } = props;
-
-    const productChange = () => {
-        stateChange(true, produto);
-    }
+    const { produto, nota, clickLike, clickDisLike, auth, changeIdProduct } = props;
 
     return (
         <div className="Card">
             <div className={`CardSimple ${getPosition(props)}`}>
                 <div className="Container-card">
                     <div className="Container-data"
-                        onClick={() => { productChange() }}>
+                        onClick={() => { changeIdProduct(produto.idx) }}>
                         <div className="Data">
                             <div className="Title">
                                 <h1 >{produto.name}</h1>
@@ -60,20 +57,8 @@ function mapStateToProps(state) {
         auth: state.auth,
     };
 }
-function mapDispatchToProp(dispatch) {
-    return {
-        addProduct(newFilter) {
-            //action creator -> action
-            const action = insertProduct(newFilter)
-            dispatch(action)
-        },
-        stateChange(stateProd, product) {
-            //action creator -> action
-            const action = changeProductState(stateProd, product)
-            dispatch(action)
-        }
-    }
-}
+
+const mapDispatchToProp = (dispatch) => bindActionCreators(actionsProduto, dispatch)
 
 export default connect(
     mapStateToProps,

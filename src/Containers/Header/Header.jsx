@@ -1,14 +1,15 @@
 import './Header.css';
 import React, { useState } from 'react';
 import { Input } from 'antd';
+
 import { connect } from "react-redux";
-
-import CadProductDrawer from '../View/CadProductDrawer';
-
-import { setFilter } from '../store/actions/produtos';
-
-import UserLogin from '../Component/UserLogin';
 import { useEffect } from 'react';
+import { setFilter } from '../../store/actions/produtos';
+
+import CadProductDrawer from '../CadProductDrawer/CadProductDrawer';
+import UserLogin from '../../Component/UserLogin/UserLogin';
+import Menu from '../Menu/Menu';
+
 
 const Header = (props) => {
     const { filter, auth } = props;
@@ -20,14 +21,14 @@ const Header = (props) => {
         } else {
             setLogado(true);
         }
-    })
+    }, [auth.user, auth.loginAnonimo])
+
     return (
         < div className="Header">
             <div className="Container-Logo">
-                <a className="Logo" href="/"  >Play Nargs</a>
-
+                <a className="Logo" href="/Home"  >Play Nargs</a>
+                <Menu />
             </div>
-
             <div className="Container-header">
                 {logado ? (
                     <div className="Container-Options" >

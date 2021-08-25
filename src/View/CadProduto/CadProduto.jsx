@@ -1,9 +1,9 @@
 import './CadProduto.css';
 import React from 'react';
-import Img from '../arquivos/exemplo.jpg'
+import Img from '../../arquivos/exemplo.jpg'
 
 import { connect } from "react-redux";
-import { insertProduct } from '../store/actions/produtos';
+import { insertProduct } from '../../store/actions/produtos';
 
 
 const CadProduto = (props) => {
@@ -41,7 +41,7 @@ const CadProduto = (props) => {
                         <p>Informações: </p><textarea className="memo" value={produto.description}></textarea>
                     </div>
                     <div className="Div2">
-                        <img src={Img} width="100%" height="100%" />
+                        <img src={Img} width="100%" height="100%" alt={Img} />
                     </div>
                 </div>
                 <div className="Controle">

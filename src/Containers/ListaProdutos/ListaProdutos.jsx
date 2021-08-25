@@ -1,9 +1,11 @@
 import './ListaProdutos.css';
 import React from 'react';
-import { connect } from "react-redux";
 
-import Card from '../Component/CardSimple';
-import { alteraProduto, initialState } from '../store/actions/produtos';
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import * as actionsProduto from '../../store/actions/produtos';
+
+import Card from '../../Component/CardSimple/CardSimple';
 
 
 
@@ -51,7 +53,7 @@ function getNota(like, dislike) {
 
 const ListaProtudos = (props) => {
 
-    const { produtos, filter } = props;
+    const { produtos, filter, type, alteraProduto } = props;
     const lstProduto = produtos.slice();
     const regex = new RegExp(`^(.*)${filter}(.*)$`, "ig");
 
@@ -60,13 +62,14 @@ const ListaProtudos = (props) => {
         <div className="ListaProdutos" >
             {lstProduto.length &&
                 lstProduto
+                    .filter(produto => produto.type === type)
                     .filter(produto => produto.name.match(regex))
                     .map((produto, idx) => (
                         <Card produto={produto}
                             position={idx}
                             nota={getNota(produto.like, produto.dislike)}
-                            clickLike={() => props.setProdutos(clickLike(lstProduto, produto.idx))}
-                            clickDisLike={() => props.setProdutos(clickDisLike(lstProduto, produto.idx))}
+                            clickLike={() => alteraProduto(clickLike(lstProduto, produto.idx))}
+                            clickDisLike={() => alteraProduto(clickDisLike(lstProduto, produto.idx))}
                         />
                     ))
             }
@@ -79,23 +82,11 @@ const ListaProtudos = (props) => {
 function mapStateToProps(state) {
     return {
         produtos: state.dados.produtos,
-        filter: state.dados.filter,
+        filter: state.dados.filter
     };
 }
 
-function mapDispatchToProp(dispatch) {
-    return {
-        setProdutos(novoProduto) {
-            //action creator -> action
-            const action = alteraProduto(novoProduto)
-            dispatch(action)
-        },
-        initialState() {
-            const action = initialState()
-            dispatch(action)
-        }
-    }
-}
+const mapDispatchToProp = (dispatch) => bindActionCreators(actionsProduto, dispatch)
 
 
 
