@@ -23,20 +23,26 @@ const CardSimple = (props) => {
         <div className="Card">
             <div className={`CardSimple ${getPosition(props)}`}>
                 <div className="Container-card">
-                    <div className="Container-data"
+                    <div className="CardSimple-Container-data"
                         onClick={() => { changeIdProduct(produto.idx) }}>
-                        <div className="Data">
-                            <div className="Title">
+                        <div className="CardSimple-Data">
+                            <div className="CardSimple-Title">
                                 <div>
-                                    <h1 >{`${produto.name} - Nota ${nota}`}</h1>
+                                    <h1>{produto.name}</h1>
+                                    <h2>{`Nota ${nota}`}</h2>
                                 </div>
                                 <div>
                                     <Link to={`/cadproduto/${produto.idx}`}><InfoIcon color='action' /></Link>
                                 </div>
                             </div>
-                            <div className="Descripte">
-                                <p >Marca: {produto.brand} - Loja: {produto.place}</p>
-                                <p >{<LikeOutlined />} {produto.like} - {<DislikeOutlined />} {produto.dislike}</p>
+                            <div className="CardSimple-Container-Descripte">
+                                <div className="CardSimple-Container-Descripte-line">
+                                    <p>{`Loja: ${produto.brand}`}</p>
+                                    <p>{`Loja: ${produto.place}`}</p>
+                                </div>
+                                <div className="CardSimple-Container-Descripte-line">
+                                    <p1> {<LikeOutlined />} {produto.like} - {<DislikeOutlined />} {produto.dislike}</p1>
+                                </div>
                             </div>
                         </div>
                     </div>

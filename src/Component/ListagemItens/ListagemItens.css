@@ -1,14 +1,26 @@
 .ListagemItens{
-    border: 3px groove rgb(188, 197, 181);
+    border: 4px groove rgb(70, 117, 33);
     border-radius: 10px;
+    background-image: linear-gradient(to right, rgb(14, 14, 66) , rgb(31, 88, 76));
+    width: 100%;
 }
 
 .item-lista{
     display: flex;
-    margin-left: 15px;
+    width: 100%;
+    border-bottom: 3px groove rgb(96, 158, 48);
+}
+
+.item-lista p{
+    color: rgba(255, 255, 0, 0.568);
 }
 
 .text-itens{
     font-size: 35px;
     margin-left: 10px;
+    max-width: 15ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 3px;
 }

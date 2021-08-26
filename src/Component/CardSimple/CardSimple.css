@@ -11,28 +11,62 @@
     height: inherit;
     width: 100%;
 }
-.Container-card .Container-data{
-    width: 95%;
+.CardSimple-Container-data{
+    width: 100%;
 }
-.Data{
+.CardSimple-Data{
     flex: 1;
     display: flex;
     padding-left: 10px;
     padding-right: 15px;
     color: #030303;
 }
-.Title{
+.CardSimple-Title{
     width: 50%;
     display: inline-flex;
     font-size: 13px;
     text-align: left;
 }
-.Descripte{
-    width: 50%;   
+.CardSimple-Title h1{
+    max-width: 25ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.CardSimple-Container-Descripte{
+    width: 50%;
     display: inline-block; 
     font-size: 15px;
     text-align: right;
 }
+
+.CardSimple-Container-Descripte-line{
+    display: flex; 
+    width: 60%;
+    margin-left: 40%;
+    margin-top: 3px;
+}
+
+.CardSimple-Container-Descripte p{
+    width: 200px;
+    max-width: 80ch;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 5px;
+}
+
+.CardSimple-Container-Descripte p1{
+    margin-left: 3px;
+    text-align: initial;
+    width: 50%;
+    max-width: 20ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .Container-Controler{
     display: flex;
 }
@@ -48,11 +82,13 @@
 }
 .Controler .Like{
     height: 50%;
+    color: rgba(0, 0, 255, 0.55)
     
 }
 
 .Controler .Dislike{
     margin-bottom: 5px;
+    color: rgba(255, 0, 0, 0.507);
 }
 
 .CardSimple.First { color: #FFF; background-color: #e6bc53; border: 2px groove #e6bc53; border-radius: 8px; height: 110px}

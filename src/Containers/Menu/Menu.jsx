@@ -1,4 +1,5 @@
 import React from 'react';
+import './Menu.css';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -36,7 +37,7 @@ export default function Menu() {
 
 
     const list = (anchor) => (
-        <div>
+        <div className='Menu-drawer-pop'>
             <div
                 className={clsx(classes.list, {
                     [classes.fullList]: anchor === 'top' || anchor === 'bottom',
@@ -48,21 +49,21 @@ export default function Menu() {
                 <List>
                     <ListItem>
                         <div>
-                            <Link to='/Home'>
+                            <Link className="link" to='/Home'>
                                 <Button>Home</Button>
                             </Link>
                         </div>
                     </ListItem>
                     <ListItem>
                         <div>
-                            <Link to='/produtos/juice'>
+                            <Link className="link" to='/produtos/juice'>
                                 <Button>Juice</Button>
                             </Link>
                         </div>
                     </ListItem>
                     <ListItem>
                         <div>
-                            <Link to='/produtos/nargs'>
+                            <Link className="link" to='/produtos/nargs'>
                                 <Button>Nargs</Button>
                             </Link>
                         </div>
@@ -79,8 +80,8 @@ export default function Menu() {
     return (
         <div>
             <React.Fragment key='left'>
-                <Button onClick={toggleDrawer('left', true)}>Menu</Button>
-                <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)}>
+                <Button className='Menu-button-icone' onClick={toggleDrawer('left', true)}>Menu</Button>
+                <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)} className='Menu-drawer'>
                     {list('left')}
                 </Drawer>
             </React.Fragment>

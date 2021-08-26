@@ -17,10 +17,12 @@ const Header = (props) => {
     const [logado, setLogado] = useState(true);
 
     useEffect(() => {
-        console.log('auth.user', auth.user)
-        if ((auth.user == null) || (auth.loginAnonimo !== true)) {
+        console.log('auth.user', auth.user, '-', auth.loginAnonimo)
+        if ((auth.user === null) && (auth.loginAnonimo !== true)) {
+            console.log(`teste 1`)
             loginAnonimo();
-        } else if ((auth.user == null) || (auth.loginAnonimo === true)) {
+        } else if ((auth.user === null) || (auth.loginAnonimo === true)) {
+            console.log(`teste 2`)
             setLogado(false);
         } else {
             setLogado(true);
@@ -30,7 +32,7 @@ const Header = (props) => {
     return (
         < div className="Header">
             <div className="Container-Logo">
-                <Link to='/Home' className='container-log-link'><a className="Logo">Play Nargs</a></Link>
+                <Link to='/Home' className='container-log-link'><a className="Header-Logo">Play Nargs</a></Link>
             </div>
             <div className="Container-header">
                 <div className="Container-Options">

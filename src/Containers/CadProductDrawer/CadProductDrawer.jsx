@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: `20%`, //drawerWidth,
         padding: 15,
-        background: 'linear-gradient(45deg, #add8e6 30%, #fafdfe 80%)',
+        background: 'linear-gradient(to right, rgb(54, 54, 143, 0.95) , rgb(31, 88, 76, 0.95))',
     },
     drawerHeader: {
         display: 'flex',
@@ -217,24 +217,22 @@ const CadProductDrawer = (props) => {
                             <input type="radio" value="juice" name="gender" checked={produto.type === 'juice'} /> Juice
                             <input type="radio" value="nargs" name="gender" checked={produto.type === 'nargs'} /> Nargs
                         </div>
+                        <div className="controle">
+                            <button
+                                onClick={() => SalvarProduto(produto)}
+                            >Salvar</button>
+                            <button
+                                onClick={() => cancelarEditProd()}
+                            >Cancelar</button>
+                            {((props.auth.user !== null) && (produto.userCad === props.auth.user.email)) ?
+                                (
+                                    <button
+                                        onClick={() => excluirProduto(produto)}
+                                    >Excluir</button>
+                                )
+                                : null}
+                        </div>
                     </div>
-                    <Divider />
-                    <div className="controle">
-                        <button
-                            onClick={() => SalvarProduto(produto)}
-                        >Salvar</button>
-                        <button
-                            onClick={() => cancelarEditProd()}
-                        >Cancelar</button>
-                        {((props.auth.user !== null) && (produto.userCad === props.auth.user.email)) ?
-                            (
-                                <button
-                                    onClick={() => excluirProduto(produto)}
-                                >Excluir</button>
-                            )
-                            : null}
-                    </div>
-                    <Divider />
                 </Drawer>
             </div>
         </div >
