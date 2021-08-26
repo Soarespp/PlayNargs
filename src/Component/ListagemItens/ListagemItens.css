@@ -1,0 +1,14 @@
+.ListagemItens{
+    border: 3px groove rgb(188, 197, 181);
+    border-radius: 10px;
+}
+
+.item-lista{
+    display: flex;
+    margin-left: 15px;
+}
+
+.text-itens{
+    font-size: 35px;
+    margin-left: 10px;
+}

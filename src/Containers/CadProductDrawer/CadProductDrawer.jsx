@@ -95,7 +95,6 @@ const CadProductDrawer = (props) => {
 
     const getDadosProduto = (idInt) => {
         var prodInt = produtos.find(prod => prod.idx === idInt)
-        console.log('prodInt', prodInt)
         return prodInt
     }
 

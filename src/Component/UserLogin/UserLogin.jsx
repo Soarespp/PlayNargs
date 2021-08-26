@@ -30,7 +30,7 @@ const UserLogin = (props) => {
                                     <ul className="dropdown-menu">
                                         <li onMouseLeave={() => handleClickAway()} >
                                             <div className="container-userlogin-title">
-                                                <a href="/#" onClick={() => handleClickAway()}
+                                                <a onClick={() => handleClickAway()}
                                                     aria-expanded={open ? 'true' : 'false'}
                                                     className="dropdown-toggle"
                                                     data-toggle="dropdown">

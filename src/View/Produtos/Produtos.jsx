@@ -17,7 +17,7 @@ const Produtos = (props) => {
 
     return (
         <div className="Home">
-            <Header />
+            <Header search={true} />
             <ListaProtudos type={typeParam} />
         </div>
     );

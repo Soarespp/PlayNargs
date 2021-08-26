@@ -1,23 +1,26 @@
 .Produto {
     display: flexbox;
-    margin-top: 15px;
-    margin-left: 15%;
+    margin-top: 2px;
+    margin-left: 25%;
     margin-right: 15%;
     border: 2px groove rgb(70, 130, 180); 
-    background:#e6e6e6;
+    background:#e6e6e6;    
     border-radius: 8px;
     font-family: cursive;
-    height: 700px;
+    width: 50%;
 }
 
-.Produto .Header{
+.cadproduto-controle-tela{
+    margin-left: 25%;
+}
+
+.CadProduto-Header{
     text-align: center;
     border-bottom: 3px groove rgb(70,130,180);
     background-color: inherit;
     display: flex;
     width: 97%;
     margin-left: 15px;
-    
 }
 
 .Produto .Header .input{
@@ -28,15 +31,13 @@
 .Produto .Content-Dados{
     display: inline-flex;
     flex:2;
-    /* border: 2px groove rgb(70, 130, 180);  */
     margin: 15px;
-    height: 520px;
     width: 130ch;
 }
 
 .Produto .Content-Dados .Div1{
     /* border: 2px groove rgb(70, 130, 180);  */
-    width: 650px;        
+    width: 45%;        
     margin-left: 10px;
     align-items: left;
 }
@@ -47,7 +48,7 @@
     border-radius: 10px;
     margin-left: 120px;
     margin-top: 50px;
-    width: 400px;
+    width: 100%;
     height: 400px;
     align-items: center;
 }
@@ -55,10 +56,16 @@
     width: 500px;   
 }
 
-.Produto .Content-Dados .Div1 .memo{
+.content-memo{
+    width: 25%;
+    height: 60%;
+}
+.memo{
     align-items: left;
-    width: 500px;  
-    height: 200px; 
+    width: 90%;
+    height: 80%;
+    font-size: 18px;
+
 }
 
 .Produto .Controle{

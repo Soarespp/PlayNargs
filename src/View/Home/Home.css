@@ -3,6 +3,7 @@
     flex-direction: column;
     text-align: center;    
     background-color: #ffff;  
+    
   }
   
   
@@ -14,6 +15,20 @@
     display: flex;
   }
   
+  .container-dados{
+    display: flex;
+    margin-left: 20%;
+    margin-top: 6%;
+    display: flex;
+  }
+  .countainer-lista{
+    border: 3px groove rgb(188, 197, 181);
+    border-radius: 10px;
+    width: 30%;
+    margin-left: 45px;
+  }
   
-  
+  .text-header{
+    font-size: 45px;  
+  }
   

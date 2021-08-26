@@ -1,8 +1,8 @@
 import { TOKEN_VALIDATED, USER_FETCHED_ANONIMO, USER_FETCHED } from '../actions/actionsTypes';
+import ImgAnonimo from '../../arquivos/anonimo_erro.png';
 
 const userKey = '_mymoney_user'
 const INITIAL_STATE = {
-    // user: { name: "", email: "", img: "" },//JSON.parse(localStorage.getItem(userKey)),
     user: JSON.parse(localStorage.getItem(userKey)),
     validToken: false,
     loginAnonimo: false,
@@ -36,9 +36,9 @@ const authReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 loginAnonimo: true,
                 user: {
-                    name: "Anonimo",
-                    email: "Anonimo",
-                    img: "Anonimo"
+                    name: "Anônimo",
+                    email: "Anônimo",
+                    img: ImgAnonimo
                 },
                 validToken: true
             }

@@ -79,7 +79,7 @@ export default function Menu() {
     return (
         <div>
             <React.Fragment key='left'>
-                <Button onClick={toggleDrawer('left', true)}>{'left'}</Button>
+                <Button onClick={toggleDrawer('left', true)}>Menu</Button>
                 <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)}>
                     {list('left')}
                 </Drawer>

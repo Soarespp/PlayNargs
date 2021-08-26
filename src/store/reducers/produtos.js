@@ -32,8 +32,8 @@ var initialState = {
         idx: 0,
         name: 'Fambroesa',
         brand: 'ZOMMO',
-        like: 0,
-        dislike: 0,
+        like: 5,
+        dislike: 7,
         place: 'centro',
         description: 'melhor produto do mundo 1',
         userCad: "pedropaulo@gmail.com",
@@ -43,8 +43,8 @@ var initialState = {
         idx: 1,
         name: 'Love 666',
         brand: 'Daya',
-        like: 0,
-        dislike: 0,
+        like: 1,
+        dislike: 2,
         place: 'centro',
         description: 'melhor produto do mundo 1',
         userCad: "pedropauloosoares@gmail.com",
@@ -54,46 +54,57 @@ var initialState = {
         idx: 2,
         name: 'Baja',
         brand: 'Constellation',
-        like: 0,
+        like: 2,
         dislike: 0,
         place: 'centro',
         description: 'melhor produto do mundo 1',
         userCad: "pedropaulo@gmail.com",
         type: 'juice'
+    },
+    {
+        idx: 3,
+        name: 'Mint',
+        brand: 'ZOMMO',
+        like: 8,
+        dislike: 0,
+        place: 'centro',
+        description: 'melhor produto do mundo 1',
+        userCad: "pedropauloosoares@gmail.com",
+        type: 'nargs'
+    },
+    {
+        idx: 4,
+        name: 'Melancia',
+        brand: 'Caravela',
+        like: 1,
+        dislike: 2,
+        place: 'centro',
+        description: 'melhor produto do mundo 1',
+        userCad: "pedropaulo@gmail.com",
+        type: 'juice'
+    },
+    {
+        idx: 5,
+        name: 'Orange',
+        brand: 'Constellation',
+        like: 8,
+        dislike: 0,
+        place: 'centro',
+        description: 'melhor produto do mundo 1',
+        userCad: "pedropauloosoares@gmail.com",
+        type: 'juice'
+    },
+    {
+        idx: 6,
+        name: 'pitaia',
+        brand: 'ZOMMO',
+        like: 8,
+        dislike: 5,
+        place: 'centro',
+        description: 'melhor produto do mundo 1',
+        userCad: "pedropauloosoares@gmail.com",
+        type: 'nargs'
     }]
-    // {
-    //     idx: 1,
-    //     name: 'Mint',
-    //     brand: 'ZOMMO',
-    //     like: 0,
-    //     dislike: 0,
-    //     place: 'centro',
-    //     description: 'melhor produto do mundo 1',
-    //     userCad: "pedropauloosoares@gmail.com",
-    //     type: 'nargs'
-    // },
-    // {
-    //     idx: 0,
-    //     name: 'Melancia',
-    //     brand: 'Caravela',
-    //     like: 0,
-    //     dislike: 0,
-    //     place: 'centro',
-    //     description: 'melhor produto do mundo 1',
-    //     userCad: "pedropaulo@gmail.com",
-    //     type: 'juice'
-    // },
-    // {
-    //     idx: 1,
-    //     name: 'Orange',
-    //     brand: 'Constellation',
-    //     like: 0,
-    //     dislike: 0,
-    //     place: 'centro',
-    //     description: 'melhor produto do mundo 1',
-    //     userCad: "pedropauloosoares@gmail.com",
-    //     type: 'juice'
-    // }]
 };
 
 export default function (state = initialState, action) {
@@ -112,7 +123,6 @@ export default function (state = initialState, action) {
             }
         case INSERT_PRODUCT:
             console.log('INSERT_PRODUCT')
-            console.log('action.payload', action.payload)
             return {
                 ...state,
                 produtos: [...state.produtos,

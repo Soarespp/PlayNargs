@@ -1,10 +1,12 @@
 import './CardSimple.css';
 import React from 'react';
 import { DislikeOutlined, LikeOutlined } from '@ant-design/icons';
+import InfoIcon from '@material-ui/icons/Info';
 
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import * as actionsProduto from '../../store/actions/produtos';
+import { Link } from "react-router-dom";
 
 function getPosition(props) {
     if (props.position === 0) return "First"
@@ -25,9 +27,12 @@ const CardSimple = (props) => {
                         onClick={() => { changeIdProduct(produto.idx) }}>
                         <div className="Data">
                             <div className="Title">
-                                <h1 >{produto.name}</h1>
-                                <h1> - </h1>
-                                <h1 >Nota: {nota} </h1>
+                                <div>
+                                    <h1 >{`${produto.name} - Nota ${nota}`}</h1>
+                                </div>
+                                <div>
+                                    <Link to={`/cadproduto/${produto.idx}`}><InfoIcon color='action' /></Link>
+                                </div>
                             </div>
                             <div className="Descripte">
                                 <p >Marca: {produto.brand} - Loja: {produto.place}</p>

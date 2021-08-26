@@ -15,7 +15,7 @@ const App = props => {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/cadproduto" component={CadProduto} />
+          <Route exact path="/cadproduto/:id" component={CadProduto} />
           <Route exact path="/produtos/:type" component={Produtos} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/" component={Content} />
