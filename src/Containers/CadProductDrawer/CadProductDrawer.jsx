@@ -14,12 +14,13 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import * as actionsProduto from '../../store/actions/produtos';
 
-const drawerWidth = 440;
+const drawerWidth = 800;
 
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        background: 'linear-gradient(45deg, #030303 50%, #FF8E53 90%)'
+        background: 'linear-gradient(45deg, #030303 50%, #FF8E53 90%)',
+        color: 'azure'
     },
     appBar: {
         transition: theme.transitions.create(['margin', 'width'], {
@@ -28,27 +29,34 @@ const useStyles = makeStyles((theme) => ({
         }),
     },
     appBarShift: {
+        // width: `calc(100% - ${drawerWidth}px)`,
         width: `calc(100% - ${drawerWidth}px)`,
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
         marginRight: drawerWidth,
+        color: 'azure'
     },
     title: {
         flexGrow: 1,
+        color: 'azure'
     },
     hide: {
         display: 'none',
+        color: 'azure'
     },
     drawer: {
         width: `100%`, //drawerWidth,
         flexShrink: 0,
+        color: 'azure'
     },
     drawerPaper: {
         width: `20%`, //drawerWidth,
+        minWidth: `250px`,
         padding: 15,
-        background: 'linear-gradient(to right, rgb(54, 54, 143, 0.95) , rgb(31, 88, 76, 0.95))',
+        background: 'linear-gradient(to right, rgba(8, 8, 122, 0.85) , rgba(42, 110, 96, 0.85))',
+        color: 'azure'
     },
     drawerHeader: {
         display: 'flex',
@@ -57,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
         // necessary for content to be below app bar
         ...theme.mixins.toolbar,
         justifyContent: 'flex-start',
+        color: 'azure'
         // background: 'linear-gradient(45deg, #fdfdfd 30%, #cacaca 80%)',
     },
     content: {
@@ -67,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.leavingScreen,
         }),
         marginRight: -drawerWidth,
+        color: 'azure'
     },
     contentShift: {
         transition: theme.transitions.create('margin', {
@@ -74,6 +84,7 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.enteringScreen,
         }),
         marginRight: 0,
+        color: 'azure',
     },
 }));
 
@@ -164,7 +175,7 @@ const CadProductDrawer = (props) => {
         <div>
             <div className="bottop">
                 <IconButton
-                    color="inherit"
+                    color="azure"
                     aria-label="open drawer"
                     edge="end"
                     onClick={novoProduto}
@@ -178,6 +189,7 @@ const CadProductDrawer = (props) => {
                     className={classes.drawer}
                     variant="persistent"
                     anchor="right"
+                    color="secondary"
                     open={open}
                     classes={{
                         paper: classes.drawerPaper,
@@ -186,8 +198,9 @@ const CadProductDrawer = (props) => {
                     <div className={classes.drawerHeader}>
                         <IconButton
                             onClick={() => cancelarEditProd()}
+                            color="inherit"
                         >
-                            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                            {theme.direction === 'rtl' ? <ChevronLeftIcon color="inherit" /> : <ChevronRightIcon color="inherit" />}
                         </IconButton>
                     </div>
                     <Divider />

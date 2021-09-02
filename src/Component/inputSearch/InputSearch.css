@@ -1,0 +1,24 @@
+.InputSearch{
+    display:flex;
+    width: 37%;
+    margin: auto;
+    height: 35px;
+    padding-bottom: 3px;
+    min-width: 320px;
+}
+
+.InputSearch .content-search{
+    display: flex;
+    width: 100%;
+}
+
+.InputSearch .content-search input{
+    width: 95%;
+}
+
+.InputSearch .content-drawer{
+    display: flex;
+    align-items: flex-end;
+    text-align: right;
+    width: 5%;
+}

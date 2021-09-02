@@ -32,10 +32,12 @@ const Header = (props) => {
     return (
         < div className="Header">
             <div className="Container-Logo">
-                <Link to='/Home' className='container-log-link'><a className="Header-Logo">Play Nargs</a></Link>
+                <Link to='/Home' >
+                    <a className="Header-Logo">Play Nargs</a>
+                </Link>
             </div>
             <div className="Container-header">
-                <div className="Container-Options">
+                {/* <div className="Container-Options">
                     {(logado && search) ? (
                         <div className="Container-Options-interno" >
                             <div className="Container-Schearch">
@@ -51,13 +53,14 @@ const Header = (props) => {
                             </div>
                         </div>
                     ) : null}
+                </div> */}
+                <div className="Container-Menu">
+                    <Menu />
                 </div>
                 <div className="Container-Login">
                     <UserLogin />
                 </div>
-                <div className="Container-Menu">
-                    <Menu />
-                </div>
+
             </div>
 
 

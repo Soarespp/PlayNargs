@@ -1,26 +1,28 @@
 .ListagemItens{
-    border: 4px groove rgb(70, 117, 33);
+    border: 4px groove rgba(72, 169, 199, 0.836);
     border-radius: 10px;
-    background-image: linear-gradient(to right, rgb(14, 14, 66) , rgb(31, 88, 76));
+    background-image:  linear-gradient(to right, rgba(8, 8, 122, 0.452) , rgba(42, 110, 96, 0.781));
     width: 100%;
 }
 
 .item-lista{
     display: flex;
     width: 100%;
-    border-bottom: 3px groove rgb(96, 158, 48);
+    border-bottom: 3px groove rgba(72, 169, 199, 0.836);;
 }
 
 .item-lista p{
-    color: rgba(255, 255, 0, 0.568);
+    width: 100%;
+    color: azure;
 }
 
 .text-itens{
-    font-size: 35px;
-    margin-left: 10px;
-    max-width: 15ch;
+    min-width: 2px;
+    /* max-width: 15ch; */
+    font-size: 25px;
+    margin-left: 5px;    
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-right: 3px;
+    /* margin-right: 3px; */
 }

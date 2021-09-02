@@ -41,7 +41,7 @@ var initialState = {
     },
     {
         idx: 1,
-        name: 'Orange Peash Ice',
+        name: 'Orange Peash Ice com o maior name',
         brand: 'Mr. Yoop',
         like: 0,
         dislike: 0,

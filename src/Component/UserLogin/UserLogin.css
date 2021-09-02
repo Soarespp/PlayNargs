@@ -1,12 +1,12 @@
 .dropdown{
     position: fixed;
     width: 200px;
-    top: 30px;
-    left: 80%;
+    top: 6.5%;
+    left: 91%;
     transform: translate(-50%, 50%);
     border: 1px solid;
     padding: 1px;
-    background-color: #506d62!important;
+    background-color: #3c6d62b2!important;
     border: 2px groove #4682b4; border-radius: 8px
 }
 

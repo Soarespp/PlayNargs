@@ -30,29 +30,22 @@ const CadProduto = (props) => {
 
 
     return (
-        <div className="Container-Produto" >
+        <div className="Produto" >
             <Header />
-            <div className='cadproduto-controle-tela'>
-                <Link to={destino}>
-                    <button>Voltar</button>
-                </Link>
-            </div>
-            <div className="Produto">
+            <div className="Container-Produto">
+                <div className='cadproduto-controle-tela'>
+                    <Link to={destino}>
+                        <button>Voltar</button>
+                    </Link>
+                </div>
                 <div className="CadProduto-Header">
                     <h1>Cadastro Produto</h1>
                 </div>
                 <div className="Content-Dados">
-                    <div className="Div1">
-                        <p>Nome: </p><input className="input" value={produto.name}></input>
-                        <p>Marca: </p><input className="input" value={produto.brand}></input>
-                        <p>Loja: </p><input className="input" value={produto.place}></input>
-                    </div>
-                    <div className="content-memo">
-                        <p>Informações: </p><textarea className="memo" value={produto.description}></textarea>
-                    </div>
-                    {/* <div className="Div2">
-                        <img src={Img} width="100%" height="100%" alt={Img} />
-                    </div> */}
+                    <p>Nome: </p><input className="input" value={produto.name}></input>
+                    <p>Marca: </p><input className="input" value={produto.brand}></input>
+                    <p>Loja: </p><input className="input" value={produto.place}></input>
+                    <p>Informações: </p><textarea className="memo" value={produto.description}></textarea>
                 </div>
             </div>
         </div >

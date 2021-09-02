@@ -1,19 +1,17 @@
-.wrapper {
-    background-color: #fff!important;
-}
-
 .login-box{
-align-items: center;
-margin-left: 40%;
-margin-right: 40%;
-margin-top: 100px;
+    align-items: center;
+    text-align: center;
 }
 
 .login-box-body {
-    padding-left: 10px;
     width: 300px;
-    background-color: #eee;
-    border: 2px groove #4682b4; border-radius: 8px
+    background-image: linear-gradient(to right, rgba(2, 2, 218, 0.452) , rgba(42, 110, 96, 0.781));
+    border: 2px groove #4682b4; border-radius: 8px;
+    margin: 20% auto auto;
+}
+
+.login-box-body p {
+    color: black;
 }
 
 .login-box button {
@@ -32,4 +30,8 @@ margin-top: 100px;
     padding-left: 20px;
     padding-right: 10px;
     padding-bottom: 5px;
+}
+
+.wrapper {
+    background-color: #fff!important;
 }

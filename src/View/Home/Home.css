@@ -1,8 +1,8 @@
 .Home {
     display: flex;
+    width: 100%;
     flex-direction: column;
     text-align: center;    
-    background-color: inherit    
   }
   .h1 {
     font-weight: 200;
@@ -13,19 +13,24 @@
   }
   
   .Home-container-dados{
-    display: flex;
-    margin-left: 20%;
-    margin-top: 5%;
-    display: flex;
+    width: 90%;
+    margin-left: 5%;
+
   }
+
+  .Home-container-dados-grid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px,800px));
+    grid-gap: 5px;
+  }
+
   .Home-countainer-lista{
-    border-radius: 10px;
-    width: 30%;
-    margin-left: 45px;
+    margin-left: 3%;
   }
 
   .Home-countainer-lista h1{
-    color: rgba(255, 255, 0, 0.685);
+    color: rgba(72, 169, 199, 0.836);
     font-family: fantasy;
   }
   

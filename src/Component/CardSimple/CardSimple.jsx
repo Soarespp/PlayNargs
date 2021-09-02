@@ -20,39 +20,36 @@ const CardSimple = (props) => {
     const { produto, nota, clickLike, clickDisLike, auth, changeIdProduct } = props;
 
     return (
-        <div className="Card">
+        <div className="CardSimple">
             <div className={`CardSimple ${getPosition(props)}`}>
-                <div className="Container-card">
+                <div className="cardsimples-container-dados">
                     <div className="CardSimple-Container-data"
                         onClick={() => { changeIdProduct(produto.idx) }}>
-                        <div className="CardSimple-Data">
-                            <div className="CardSimple-Title">
-                                <div>
-                                    <h1>{produto.name}</h1>
-                                    <h2>{`Nota ${nota}`}</h2>
-                                </div>
-                                <div>
-                                    <Link to={`/cadproduto/${produto.idx}`}><InfoIcon color='action' /></Link>
-                                </div>
+                        <div className="CardSimple-data-Title">
+                            <div className="CardSimple-data-Title-item">
+                                <h1 className='CardSimple-h1-cortado'>{produto.name}</h1>
                             </div>
-                            <div className="CardSimple-Container-Descripte">
-                                <div className="CardSimple-Container-Descripte-line">
-                                    <p>{`Loja: ${produto.brand}`}</p>
-                                    <p>{`Loja: ${produto.place}`}</p>
-                                </div>
-                                <div className="CardSimple-Container-Descripte-line">
-                                    <p1> {<LikeOutlined />} {produto.like} - {<DislikeOutlined />} {produto.dislike}</p1>
-                                </div>
+                            <div className='CardSimple-data-Title-item'>
+                                <p className='CardSimple-h1-cortado'>{`Loja: ${produto.brand}  Loja: ${produto.place} `}</p>
                             </div>
                         </div>
+                        <div className='CardSimple-data-Title-nota'>
+                            <h1 className='CardSimple-h1-cortado-nota'>{`Nota ${nota}`}</h1>
+                        </div>
                     </div>
+                    <div className='Card-simples-info-cad'>
+                        <Link to={`/cadproduto/${produto.idx}`}><InfoIcon color='action' /></Link>
+                        <div className="CardSimple-Container-Descripte-line">
+                            <p1> {<LikeOutlined />} {produto.like}   {<DislikeOutlined />} {produto.dislike}</p1>
+                        </div>
+                    </div>
+                </div>
+                <div className='Container-Controler'>
                     {!auth.loginAnonimo ?
                         (
-                            <div className="Container-Controler">
-                                <div className="Controler">
-                                    <div className="Like"><LikeOutlined onClick={clickLike} /></div>
-                                    <div className="Dislike"><DislikeOutlined onClick={clickDisLike} /></div>
-                                </div>
+                            <div className="Container-Controler-login">
+                                <div className="Like"><LikeOutlined onClick={clickLike} /></div>
+                                <div className="Dislike"><DislikeOutlined onClick={clickDisLike} /></div>
                             </div>
                         ) : null}
                 </div>

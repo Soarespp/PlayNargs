@@ -1,10 +1,10 @@
 .Menu-drawer{
-    background-image: linear-gradient(to right, rgba(103, 103, 138, 0.43) , rgb(31, 88, 76, 0.20));    
+    background-image: linear-gradient(to right, rgba(2, 2, 218, 0.452) , rgba(42, 110, 96, 0.781)); 
     height: 100%;
 }
 
 .Menu-drawer-pop{
-   background-image: linear-gradient(to right, rgb(54, 54, 143, 0.90) , rgb(31, 88, 76, 0.90));
+   background-image: linear-gradient(to right, rgba(2, 2, 218, 0.452) , rgba(42, 110, 96, 0.781));
    height: 100%;
 }
 

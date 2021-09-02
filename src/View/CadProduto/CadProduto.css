@@ -1,53 +1,45 @@
-.Produto {
-    display: flexbox;
-    margin-top: 2px;
-    margin-left: 25%;
-    margin-right: 15%;
+.Container-Produto {
+    display: grid;
+    margin: auto;
     border: 2px groove rgb(70, 130, 180); 
-    background-image: linear-gradient(to right, rgb(14, 14, 66) , rgb(31, 88, 76));
+    background-image: linear-gradient(to right, rgba(2, 2, 218, 0.452) , rgba(42, 110, 96, 0.781));
     border-radius: 8px;
     font-family: cursive;
-    width: 50%;
+    width: 40%;
+    min-width: 350px;
 }
 
 .cadproduto-controle-tela{
-    margin-left: 25%;
+    display: flex;
+    width: 250px;
 }
 
-.cadproduto-controle-tela button{
-    width: 13%;
-    background-color: rgba(255, 255, 0, 0.55);
+.Produto .Container-Produto .cadproduto-controle-tela button{
+    background-color: azure;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .CadProduto-Header{
+    display: flex;
+    width: 100%;
+    background-color: khaki;
     text-align: center;
     border-bottom: 4px groove rgb(54, 107, 151);
     background-color: inherit;
-    display: flex;
-    width: 97%;
-    margin-left: 15px;
-    color: rgba(255, 255, 0, 0.815);
+    color: azure;
 }
 
 .Produto .Header .input{
     padding: 100px;
+    background-color: lightcoral;
     
 }
 
 .Produto .Content-Dados{
-    display: inline-flex;
-    flex:2;
+    display: grid;
     margin: 15px;
-    width: 130ch;
 }
 
-.Produto .Content-Dados .Div1{
-    /* border: 2px groove rgb(70, 130, 180);  */
-    width: 45%;        
-    margin-left: 10px;
-    align-items: left;
-}
 
 .Produto .Content-Dados .Div2{
     display: flex;
@@ -59,23 +51,15 @@
     height: 400px;
     align-items: center;
 }
-.Produto .Content-Dados .Div1 .input{
-    width: 500px;   
+.Container-Produto .Content-Dados .input{
+    width: 80%;   
 }
 
-.Content-Dados p{
-    color: rgba(255, 255, 0, 0.815);
+p{
+    color: azure;
 }
-
-.content-memo{
-    width: 25%;
-    height: 60%;
-}
-.memo{
-    align-items: left;
-    width: 90%;
-    height: 80%;
-    font-size: 18px;
+.Produto .Container-Produto .Content-Dados .memo{
+    display: flex;
 
 }
 

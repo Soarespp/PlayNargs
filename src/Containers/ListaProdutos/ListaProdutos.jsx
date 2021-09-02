@@ -65,11 +65,14 @@ const ListaProtudos = (props) => {
                     .filter(produto => produto.type === type)
                     .filter(produto => produto.name.match(regex))
                     .map((produto, idx) => (
-                        <Card produto={produto}
+                        <Card
+                            className="teste-item-12"
+                            produto={produto}
                             position={idx}
                             nota={getNota(produto.like, produto.dislike)}
                             clickLike={() => alteraProduto(clickLike(lstProduto, produto.idx))}
-                            clickDisLike={() => alteraProduto(clickDisLike(lstProduto, produto.idx))}
+                            clickDisLike={() => alteraProduto(clickDisLike(lstProduto, produto.idx))
+                            }
                         />
                     ))
             }
