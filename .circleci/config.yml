@@ -12,6 +12,7 @@ jobs:
       - checkout
       - run: |
           yarn
+          yarn build
 
 workflows:
   my-custom-workflow:
