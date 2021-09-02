@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 
-import { login, loginAnonimo } from '../store/actions/authActions'
+import { login, loginAnonimo, loginAdmin } from '../store/actions/authActions'
 import GoogleLogin from 'react-google-login';
 
 
@@ -20,6 +20,7 @@ class Auth extends Component {
 
     render() {
         const responseGoogle = (response) => {
+            console.log('auth login google - ', response)
             this.props.loginGoogle(response);
         }
 
@@ -33,6 +34,13 @@ class Auth extends Component {
                                 className="btn-login"
                                 onClick={() => this.props.loginAnonimo()}>
                                 {'Anônimo'}
+                            </button>
+                        </div>
+                        <div className="login-box-buttons">
+                            <button type="submit"
+                                className="btn-login"
+                                onClick={() => this.props.loginAdmin()}>
+                                {'Admin'}
                             </button>
                         </div>
                         <div className="login-box-buttons">
@@ -71,6 +79,11 @@ function mapDispatchToProp(dispatch) {
         loginAnonimo() {
             //action creator -> action
             const action = loginAnonimo()
+            dispatch(action)
+        },
+        loginAdmin() {
+            //action creator -> action
+            const action = loginAdmin()
             dispatch(action)
         }
 

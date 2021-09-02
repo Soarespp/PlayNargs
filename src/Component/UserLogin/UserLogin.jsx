@@ -5,7 +5,7 @@ import Portal from '@material-ui/core/Portal';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { connect } from "react-redux";
 
-//navBar
+import { GoogleLogout } from 'react-google-login';
 import { logout } from '../../store/actions/authActions';
 
 const UserLogin = (props) => {

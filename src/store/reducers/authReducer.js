@@ -1,4 +1,4 @@
-import { TOKEN_VALIDATED, USER_FETCHED_ANONIMO, USER_FETCHED } from '../actions/actionsTypes';
+import { TOKEN_VALIDATED, USER_FETCHED_ANONIMO, USER_FETCHED, USER_FETCHED_ADMIN } from '../actions/actionsTypes';
 import ImgAnonimo from '../../arquivos/anonimo_erro.png';
 
 const userKey = '_mymoney_user'
@@ -38,6 +38,17 @@ const authReducer = (state = INITIAL_STATE, action) => {
                 user: {
                     name: "Anônimo",
                     email: "Anônimo",
+                    img: ImgAnonimo
+                },
+                validToken: true
+            }
+        case USER_FETCHED_ADMIN:
+            return {
+                ...state,
+                loginAnonimo: false,
+                user: {
+                    name: "Admin",
+                    email: "Admin",
                     img: ImgAnonimo
                 },
                 validToken: true

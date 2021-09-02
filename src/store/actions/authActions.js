@@ -1,4 +1,4 @@
-import { TOKEN_VALIDATED, USER_FETCHED_ANONIMO, USER_FETCHED } from './actionsTypes';
+import { TOKEN_VALIDATED, USER_FETCHED_ANONIMO, USER_FETCHED, USER_FETCHED_ADMIN } from './actionsTypes';
 
 export function login(values) {
     return submit(values)
@@ -15,6 +15,13 @@ function submit(values) {
 export function loginAnonimo() {
     return {
         type: USER_FETCHED_ANONIMO,
+        payload: true
+    }
+}
+
+export function loginAdmin() {
+    return {
+        type: USER_FETCHED_ADMIN,
         payload: true
     }
 }
