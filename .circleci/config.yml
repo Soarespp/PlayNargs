@@ -1,19 +1,14 @@
-version: 2.1
-executors:
-  my-custom-executor:
+version: 2.0
+jobs:
+  build:
     docker:
       - image: circleci/node:lts
-      
-jobs:
-  build-my-project:
-
-    executor: my-custom-executor
     steps:
       - checkout
-      - run: |
-          yarn
-
-workflows:
-  my-custom-workflow:
-    jobs:
-      - build-my-project
+      - run:
+          name: Unit test
+          command: |
+            yarn
+      - store_artifacts:
+          path: ./coverage
+          destination: artifact-file 
