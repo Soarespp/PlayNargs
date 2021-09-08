@@ -1,13 +1,22 @@
+.menu{
+    color: white;
+}
 .Menu-drawer{
-    background-image: linear-gradient(to right, rgba(2, 2, 218, 0.452) , rgba(42, 110, 96, 0.781)); 
+    background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
     height: 100%;
 }
 
 .Menu-drawer-pop{
-   background-image: linear-gradient(to right, rgba(2, 2, 218, 0.452) , rgba(42, 110, 96, 0.781));
+   background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
    height: 100%;
 }
 
 .Menu-drawer-pop Button{
-    color: yellow;
+    color: rgb(255, 255, 255);
+    /* background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781)); */
+}
+
+.Menu-button-icone{
+    background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
+    color: white;
 }

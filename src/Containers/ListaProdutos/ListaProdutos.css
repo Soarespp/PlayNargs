@@ -1,12 +1,14 @@
 .ListaProdutos{
     display: grid;
-    border: 3px groove rgb(70, 130, 180);
+    grid-template-columns: 1;
+    border: 3px groove rgb(118, 200, 147);
     border-radius: 8px;
     margin: auto;
     padding: 10px;
     width:90%;
     max-width: 700px;    
     grid-gap: 10px;
+    background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
 }
 .teste-item-12{
     background-color: rgb(201, 9, 9);

@@ -5,13 +5,13 @@
 
 .login-box-body {
     width: 300px;
-    background-image: linear-gradient(to right, rgba(2, 2, 218, 0.452) , rgba(42, 110, 96, 0.781));
+    background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
     border: 2px groove #4682b4; border-radius: 8px;
     margin: 20% auto auto;
 }
 
 .login-box-body p {
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .login-box button {

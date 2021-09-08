@@ -1,6 +1,6 @@
 import './CadProduto.css';
 import React from 'react';
-// import Img from '../../arquivos/exemplo.jpg'
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
@@ -34,8 +34,8 @@ const CadProduto = (props) => {
             <Header />
             <div className="Container-Produto">
                 <div className='cadproduto-controle-tela'>
-                    <Link to={destino}>
-                        <button>Voltar</button>
+                    <Link to={destino} className="link-back">
+                        <KeyboardBackspaceIcon />
                     </Link>
                 </div>
                 <div className="CadProduto-Header">

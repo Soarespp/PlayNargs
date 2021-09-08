@@ -37,23 +37,6 @@ const Header = (props) => {
                 </Link>
             </div>
             <div className="Container-header">
-                {/* <div className="Container-Options">
-                    {(logado && search) ? (
-                        <div className="Container-Options-interno" >
-                            <div className="Container-Schearch">
-                                <Input placeholder="Pesquisa Lojas"
-                                    value={filter}
-                                    onChange={e => {
-                                        props.filterProduct(e.target.value)
-                                    }}
-                                />
-                            </div>
-                            <div className="novo2">
-                                <CadProductDrawer />
-                            </div>
-                        </div>
-                    ) : null}
-                </div> */}
                 <div className="Container-Menu">
                     <Menu />
                 </div>

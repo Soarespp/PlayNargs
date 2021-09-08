@@ -6,7 +6,7 @@
     transform: translate(-50%, 50%);
     border: 1px solid;
     padding: 1px;
-    background-color: #3c6d62b2!important;
+    background-color: #34a0a4!important;
     border: 2px groove #4682b4; border-radius: 8px
 }
 
@@ -31,11 +31,13 @@
 
 .dropdown-toggle{
     width: 60%;
+    color: white;
 }
 
 .container-userlogin-title{
   width: 100%;
   display: flex;
+  color: white;
 }
 
 a{
@@ -48,8 +50,12 @@ a{
 .dropdown-toggle span{
   white-space: nowrap;
   overflow: hidden;              
-
+  color: white;
   text-overflow:    ellipsis;
+}
+
+.btn-btn-default-btn-flat{
+  color: white;
 }
 
 .profile {

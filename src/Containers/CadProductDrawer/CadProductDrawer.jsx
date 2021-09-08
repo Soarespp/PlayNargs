@@ -20,7 +20,9 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         background: 'linear-gradient(45deg, #030303 50%, #FF8E53 90%)',
-        color: 'azure'
+        color: 'azure',
+        alignItems: 'flex-start',
+        textAlign: 'flex-start',
     },
     appBar: {
         transition: theme.transitions.create(['margin', 'width'], {
@@ -55,17 +57,18 @@ const useStyles = makeStyles((theme) => ({
         width: `20%`, //drawerWidth,
         minWidth: `250px`,
         padding: 15,
-        background: 'linear-gradient(to right, rgba(8, 8, 122, 0.85) , rgba(42, 110, 96, 0.85))',
+        background: 'linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.99))',
         color: 'azure'
     },
     drawerHeader: {
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         padding: theme.spacing(0, 1),
         // necessary for content to be below app bar
         ...theme.mixins.toolbar,
         justifyContent: 'flex-start',
-        color: 'azure'
+        color: 'azure',
+        textAlign: 'flex-start',
         // background: 'linear-gradient(45deg, #fdfdfd 30%, #cacaca 80%)',
     },
     content: {
@@ -76,7 +79,9 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.leavingScreen,
         }),
         marginRight: -drawerWidth,
-        color: 'azure'
+        color: 'azure',
+        alignItems: 'flex-start',
+        textAlign: 'flex-start',
     },
     contentShift: {
         transition: theme.transitions.create('margin', {
@@ -85,6 +90,8 @@ const useStyles = makeStyles((theme) => ({
         }),
         marginRight: 0,
         color: 'azure',
+        alignItems: 'flex-start',
+        textAlign: 'flex-start',
     },
 }));
 

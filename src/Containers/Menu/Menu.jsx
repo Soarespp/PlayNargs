@@ -78,9 +78,9 @@ export default function Menu() {
     );
 
     return (
-        <div>
+        <div className="Menu">
             <React.Fragment key='right'>
-                <Button className='Menu-button-icone' onClick={toggleDrawer('right', true)}>Menu</Button>
+                <Button color="inherit" className='Menu-button-icone' onClick={toggleDrawer('right', true)}>Menu</Button>
                 <Drawer anchor={'right'} open={state['right']} onClose={toggleDrawer('right', false)} className='Menu-drawer'>
                     {list('right')}
                 </Drawer>

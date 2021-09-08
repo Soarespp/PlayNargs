@@ -4,3 +4,7 @@
 .bottop{
     background-color: lawngreen;
 }
+.cadastroProd{
+    text-align: left;
+    align-items: flex-start;
+}

@@ -2,7 +2,7 @@
     display: grid;
     margin: auto;
     border: 2px groove rgb(70, 130, 180); 
-    background-image: linear-gradient(to right, rgba(2, 2, 218, 0.452) , rgba(42, 110, 96, 0.781));
+    background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
     border-radius: 8px;
     font-family: cursive;
     width: 40%;
@@ -27,6 +27,10 @@
     border-bottom: 4px groove rgb(54, 107, 151);
     background-color: inherit;
     color: azure;
+}
+
+.Produto .Container-Produto .cadproduto-controle-tela .link-back {
+    color: rgb(255, 255, 255);
 }
 
 .Produto .Header .input{
