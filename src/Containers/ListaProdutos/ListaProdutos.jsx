@@ -52,7 +52,7 @@ function getNota(like, dislike) {
 
 const ListaProtudos = (props) => {
 
-    const { produtos, filter, type, alteraProduto, updateProduct } = props;
+    const { produtos, filter, type, updateProduct } = props;
     const lstProduto = produtos.slice();
     const regex = new RegExp(`^(.*)${filter}(.*)$`, "ig");
 

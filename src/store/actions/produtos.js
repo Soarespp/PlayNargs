@@ -1,5 +1,5 @@
 import {
-    PROD_CHANGE, SET_FILTER, INSERT_PRODUCT, INITIAL_STATE, CHANGE_STATE_PRODUCT, NEW_ID_PRODUCT,
+    PROD_CHANGE, SET_FILTER, INSERT_PRODUCT, NEW_ID_PRODUCT,
     UPDATE_PRODUCT, DEL_PRODUCT, BUSCAR_DADOS
 } from './actionsTypes';
 
@@ -66,7 +66,7 @@ export async function insertProduct(newProduct) {
             console.error('Failed post product', err);
         });
 
-    if (result.status = 200) {
+    if (!result.data.error) {
         return {
             type: INSERT_PRODUCT,
             payload: newProduct
@@ -114,24 +114,9 @@ export async function deleteProduct(newProduct) {
     }
 }
 
-export function initialState(newProduct) {
-    return {
-        type: INITIAL_STATE,
-        payload: newProduct
-    }
-}
-
 export function changeIdProduct(newId) {
     return {
         type: NEW_ID_PRODUCT,
         payload: newId
-    }
-}
-
-export function changeProductState(newStateProduct, product) {
-    return {
-        type: CHANGE_STATE_PRODUCT,
-        payload: newStateProduct,
-        prodPayLoad: product
     }
 }

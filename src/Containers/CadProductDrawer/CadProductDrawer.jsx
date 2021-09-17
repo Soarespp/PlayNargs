@@ -111,10 +111,7 @@ const CadProductDrawer = (props) => {
     var [produto, setProduto] = useState(newProduct);
     const [stateControle, setStateControle] = useState("B");
 
-    const getDadosProduto = (idInt) => {
-        var prodInt = produtos.find(prod => prod.idx === idInt)
-        return prodInt
-    }
+
 
     function incluirProduto(produtoEdt) {
         var id = getIdMax(produtos, produtoEdt.type);
@@ -164,6 +161,11 @@ const CadProductDrawer = (props) => {
     }
 
     useEffect(() => {
+        const getDadosProduto = (idInt) => {
+            var prodInt = produtos.find(prod => prod.idx === idInt)
+            return prodInt
+        }
+
         if ((idProduto === -1) && (stateControle === 'I')) {
             setOpen(true)
         } else if (idProduto !== -1) {
@@ -174,7 +176,7 @@ const CadProductDrawer = (props) => {
         }
         else
             setOpen(false)
-    }, [setOpen, getDadosProduto, idProduto, produto.idx, stateControle]);
+    }, [setOpen, produtos, idProduto, produto.idx, stateControle]);
 
     return (
         <div>

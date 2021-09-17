@@ -1,10 +1,8 @@
 import './Header.css';
-import React, { useState } from 'react';
-import { Input } from 'antd';
+import React, { useState, useEffect } from 'react';
 
 import { connect } from "react-redux";
-import { useEffect } from 'react';
-import { setFilter } from '../../store/actions/produtos';
+import { setFilter, getDadosApi } from '../../store/actions/produtos';
 import { loginAnonimo } from '../../store/actions/authActions';
 
 import UserLogin from '../../Component/UserLogin/UserLogin';
@@ -12,10 +10,11 @@ import Menu from '../Menu/Menu';
 import { Link } from "react-router-dom";
 
 const Header = (props) => {
-    const { filter, auth, search, loginAnonimo } = props;
+    const { auth, loginAnonimo, getDadosApi } = props;
     const [logado, setLogado] = useState(true);
-
+    console.log(logado)
     useEffect(() => {
+        getDadosApi();
         if ((auth.user === null) && (auth.loginAnonimo !== true)) {
             loginAnonimo();
         } else if ((auth.user === null) || (auth.loginAnonimo === true)) {
@@ -23,13 +22,13 @@ const Header = (props) => {
         } else {
             setLogado(true);
         }
-    }, [auth.user, auth.loginAnonimo, loginAnonimo])
+    }, [auth.user, auth.loginAnonimo, loginAnonimo, getDadosApi])
 
     return (
         < div className="Header">
             <div className="Container-Logo">
-                <Link to='/Home' >
-                    <a className="Header-Logo">Play Nargs</a>
+                <Link to='/Home' className="Container-Logo-link">
+                    <p className="Header-Logo">Play Nargs</p>
                 </Link>
             </div>
             <div className="Container-header">
@@ -64,6 +63,11 @@ function mapDispatchToProp(dispatch) {
         loginAnonimo() {
             //action creator -> action
             const action = loginAnonimo()
+            dispatch(action)
+        },
+        getDadosApi() {
+            //action creator -> action
+            const action = getDadosApi()
             dispatch(action)
         }
     }

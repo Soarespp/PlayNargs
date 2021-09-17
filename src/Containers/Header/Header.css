@@ -13,6 +13,11 @@
     height: 100%;
     width: 92%;
     min-width: 260px;
+    text-decoration-color: white;
+}
+
+.Container-Logo .Container-Logo-link{
+    text-decoration: none;
 }
 
 .Header-Logo {
@@ -20,7 +25,7 @@
     font-family: cursive;
     font-size: 50px;
     color: rgb(255, 255, 255);
-    text-decoration: none;
+    text-decoration-color: white;
     margin-left: 10px;
     margin-top: 20%;
 }

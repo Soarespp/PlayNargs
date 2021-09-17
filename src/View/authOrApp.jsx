@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import Home from './Home/Home';
 import Auth from '../auth/auth'
@@ -15,6 +14,7 @@ class AuthOrApp extends Component {
             this.props.validateToken(this.props.auth.user.token)
         }
     }
+
     render() {
         const { user, validToken } = this.props.auth
         if (user && validToken) {

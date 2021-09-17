@@ -5,7 +5,6 @@ import Portal from '@material-ui/core/Portal';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { connect } from "react-redux";
 
-import { GoogleLogout } from 'react-google-login';
 import { logout } from '../../store/actions/authActions';
 
 const UserLogin = (props) => {
@@ -30,12 +29,12 @@ const UserLogin = (props) => {
                                     <ul className="dropdown-menu">
                                         <li onMouseLeave={() => handleClickAway()} >
                                             <div className="container-userlogin-title">
-                                                <a onClick={() => handleClickAway()}
+                                                <p onClick={() => handleClickAway()}
                                                     aria-expanded={open ? 'true' : 'false'}
                                                     className="dropdown-toggle"
                                                     data-toggle="dropdown">
                                                     <span>{user.name}</span>
-                                                </a>
+                                                </p>
                                                 <img className="profile" src={user.img} alt="Profile" />
                                             </div>
                                             <ul className="dropdown-menu">

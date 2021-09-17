@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './InputSearch.css';
 
 import { connect } from "react-redux";
@@ -9,7 +9,6 @@ import CadProductDrawer from '../../Containers/CadProductDrawer/CadProductDrawer
 
 const InputSearch = (props) => {
     const { filter, auth } = props;
-    const [logado, setLogado] = useState(true);
 
     return (
         <div className="InputSearch">
