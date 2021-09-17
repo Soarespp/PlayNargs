@@ -1,7 +1,10 @@
 import axios from "axios";
 
+// const URL_LOCAL = "http://localhost:8080";
+const URL_PROD = "https://playnargs-api.herokuapp.com";
+
 const api = axios.create({
-    baseURL: "http://localhost:8080",
+    baseURL: URL_PROD,
 });
 
 export default api;
