@@ -8,28 +8,27 @@ import * as actionsProduto from '../../store/actions/produtos';
 import Card from '../../Component/CardSimple/CardSimple';
 
 
-
-function clickLike(Arr, Idp) {
+function clickLike(Arr, prd) {
     const dados = Arr;
 
     dados.forEach(item => {
-        if (item.idx === Idp) {
+        if (item.idx === prd.idx) {
             return item.like++
         }
     });
-    return dados;
+    return prd
 };
 
-function clickDisLike(Arr, Idx) {
+function clickDisLike(Arr, prd) {
     const dados = Arr;
 
     dados.forEach((item) => {
-        if (item.idx === Idx) {
+        if (item.idx === prd.idx) {
             return item.dislike++;
         }
     })
 
-    return dados;
+    return prd
 };
 
 function getNota(like, dislike) {
@@ -53,7 +52,7 @@ function getNota(like, dislike) {
 
 const ListaProtudos = (props) => {
 
-    const { produtos, filter, type, alteraProduto } = props;
+    const { produtos, filter, type, alteraProduto, updateProduct } = props;
     const lstProduto = produtos.slice();
     const regex = new RegExp(`^(.*)${filter}(.*)$`, "ig");
 
@@ -70,8 +69,8 @@ const ListaProtudos = (props) => {
                             produto={produto}
                             position={idx}
                             nota={getNota(produto.like, produto.dislike)}
-                            clickLike={() => alteraProduto(clickLike(lstProduto, produto.idx))}
-                            clickDisLike={() => alteraProduto(clickDisLike(lstProduto, produto.idx))
+                            clickLike={() => updateProduct(clickLike(lstProduto, produto))}
+                            clickDisLike={() => updateProduct(clickDisLike(lstProduto, produto))
                             }
                         />
                     ))

@@ -6,9 +6,11 @@ import { bindActionCreators } from 'redux'
 import Home from './Home/Home';
 import Auth from '../auth/auth'
 import { validateToken } from '../store/actions/authActions'
+import { getDadosApi } from '../store/actions/produtos'
 
 class AuthOrApp extends Component {
     componentWillMount() {
+        this.props.getDadosApi();
         if (this.props.auth.user) {
             this.props.validateToken(this.props.auth.user.token)
         }
@@ -27,5 +29,18 @@ class AuthOrApp extends Component {
 }
 
 const mapStateToProps = state => ({ auth: state.auth })
-const mapDispatchToProps = dispatch => bindActionCreators({ validateToken }, dispatch)
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getDadosApi() {
+            const action = getDadosApi()
+            dispatch(action)
+        },
+        validateToken() {
+            const action = validateToken()
+            dispatch(action)
+        }
+    }
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(AuthOrApp)

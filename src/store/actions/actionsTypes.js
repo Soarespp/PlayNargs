@@ -12,3 +12,4 @@ export const TOKEN_VALIDATED = 'TOKEN_VALIDATED';
 export const NEW_ID_PRODUCT = 'NEW_ID_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const DEL_PRODUCT = 'DEL_PRODUCT';
+export const BUSCAR_DADOS = 'BUSCAR_DADOS';

@@ -1,7 +1,43 @@
 import {
     PROD_CHANGE, SET_FILTER, INSERT_PRODUCT, INITIAL_STATE, CHANGE_STATE_PRODUCT, NEW_ID_PRODUCT,
-    UPDATE_PRODUCT, DEL_PRODUCT
+    UPDATE_PRODUCT, DEL_PRODUCT, BUSCAR_DADOS
 } from './actionsTypes';
+
+import api from '../../services/Api';
+
+// const getDadosAction = async () => {
+//     console.log('getDadosAction ')
+//     let essencias = await api
+//         .get('/essencia')
+//         .then(result => {
+//             console.log('result', result.data.essencias);
+//             return result.data.essencias
+//         })
+//         .catch(err => {
+//             // trata se alguma das promises falhar
+//             console.error('Failed retrieving information', err);
+//         });
+
+//     console.log('Essencias', essencias)
+//     return essencias
+// }
+
+export async function getDadosApi(novoProduto) {
+    console.log('getDadosApi')
+    let essencias = await api
+        .get('/essencia')
+        .then(result => {
+            return result.data.essencias
+        })
+        .catch(err => {
+            // trata se alguma das promises falhar
+            console.error('Failed retrieving information', err);
+        });
+    return {
+        type: BUSCAR_DADOS,
+        payload: essencias
+    }
+}
 
 export function alteraProduto(novoProduto) {
     console.log('alteraProduto')
@@ -12,39 +48,73 @@ export function alteraProduto(novoProduto) {
 }
 
 export function setFilter(newFilter) {
-    console.log('setFilter')
     return {
         type: SET_FILTER,
         payload: newFilter
     }
 }
 
-export function insertProduct(newProduct) {
-    console.log('insertProduct teste', newProduct)
-    return {
-        type: INSERT_PRODUCT,
-        payload: newProduct
+export async function insertProduct(newProduct) {
+    console.log('insertProduct')
+    const result = await api
+        .post('/essencia', newProduct)
+        .then(result => {
+            return result
+        })
+        .catch(err => {
+            // trata se alguma das promises falhar
+            console.error('Failed post product', err);
+        });
+
+    if (result.status = 200) {
+        return {
+            type: INSERT_PRODUCT,
+            payload: newProduct
+        }
     }
 }
 
-export function updateProduct(newProduct) {
-    console.log('updateProduct teste', newProduct)
-    return {
-        type: UPDATE_PRODUCT,
-        payload: newProduct
+export async function updateProduct(newProduct) {
+    console.log('updateProduct')
+    const result = await api
+        .put('/essencia', newProduct)
+        .then(result => {
+            return result
+        })
+        .catch(err => {
+            console.error('Failed alterar produto', err);
+        });
+
+    if (!result.data.error) {
+        return {
+            type: UPDATE_PRODUCT,
+            payload: newProduct
+        }
     }
+
 }
 
-export function deleteProduct(newProduct) {
-    console.log('deleteProduct teste', newProduct)
-    return {
-        type: DEL_PRODUCT,
-        payload: newProduct
+export async function deleteProduct(newProduct) {
+    console.log('deleteProduct', newProduct)
+    const result = await api
+        .delete('/essencia', { data: { idx: newProduct.idx } })
+        .then(result => {
+            return result
+        })
+        .catch(err => {
+            console.error('Failed deletar produto', err);
+        });
+
+    console.log('result', result)
+    if (!result.data.error) {
+        return {
+            type: DEL_PRODUCT,
+            payload: newProduct
+        }
     }
 }
 
 export function initialState(newProduct) {
-    console.log('initialState')
     return {
         type: INITIAL_STATE,
         payload: newProduct
@@ -52,7 +122,6 @@ export function initialState(newProduct) {
 }
 
 export function changeIdProduct(newId) {
-    console.log('chandeIdProduct', newId)
     return {
         type: NEW_ID_PRODUCT,
         payload: newId
@@ -60,7 +129,6 @@ export function changeIdProduct(newId) {
 }
 
 export function changeProductState(newStateProduct, product) {
-    console.log('changeProductState')
     return {
         type: CHANGE_STATE_PRODUCT,
         payload: newStateProduct,

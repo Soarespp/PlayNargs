@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 import { setFilter } from '../../store/actions/produtos';
 import { loginAnonimo } from '../../store/actions/authActions';
 
-import CadProductDrawer from '../CadProductDrawer/CadProductDrawer';
 import UserLogin from '../../Component/UserLogin/UserLogin';
 import Menu from '../Menu/Menu';
 import { Link } from "react-router-dom";
@@ -17,12 +16,9 @@ const Header = (props) => {
     const [logado, setLogado] = useState(true);
 
     useEffect(() => {
-        console.log('auth.user', auth.user, '-', auth.loginAnonimo)
         if ((auth.user === null) && (auth.loginAnonimo !== true)) {
-            console.log(`teste 1`)
             loginAnonimo();
         } else if ((auth.user === null) || (auth.loginAnonimo === true)) {
-            console.log(`teste 2`)
             setLogado(false);
         } else {
             setLogado(true);

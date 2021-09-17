@@ -154,7 +154,6 @@ const CadProductDrawer = (props) => {
 
 
     const novoProduto = () => {
-        console.log('novoProduto')
         setStateControle('I');
     }
 
@@ -165,7 +164,6 @@ const CadProductDrawer = (props) => {
     }
 
     useEffect(() => {
-        console.log('useEffect iProduto', idProduto, '=', stateControle)
         if ((idProduto === -1) && (stateControle === 'I')) {
             setOpen(true)
         } else if (idProduto !== -1) {

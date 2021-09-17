@@ -1,7 +1,8 @@
 
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import produtosReducers from './reducers/produtos';
 import authReducer from './reducers/authReducer';
+import promise from 'redux-promise'
 
 const reducers = combineReducers({
     dados: produtosReducers,
@@ -9,7 +10,7 @@ const reducers = combineReducers({
 })
 
 function storeConfig() {
-    return createStore(reducers)
+    return applyMiddleware(promise)(createStore)(reducers)
 }
 
 export default storeConfig

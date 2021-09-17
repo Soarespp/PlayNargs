@@ -8,6 +8,7 @@ import {
     NEW_ID_PRODUCT,
     UPDATE_PRODUCT,
     DEL_PRODUCT,
+    BUSCAR_DADOS,
 } from '../actions/actionsTypes';
 
 const newProductbkp = {
@@ -120,27 +121,29 @@ var initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
+        case BUSCAR_DADOS:
+            console.log('BUSCAR_DADOS', action.payload)
+            return {
+                ...state,
+                produtos: action.payload
+            }
         case PROD_CHANGE:
-            console.log('PROD_CHANGE')
             return {
                 ...state,
                 produtos: action.payload
             }
         case SET_FILTER:
-            console.log('SET_FILTER')
             return {
                 ...state,
                 filter: action.payload
             }
         case INSERT_PRODUCT:
-            console.log('INSERT_PRODUCT')
             return {
                 ...state,
                 produtos: [...state.produtos,
                 action.payload]
             }
         case UPDATE_PRODUCT:
-            console.log('UPDATE_PRODUCT')
             var lstProd = [...state.produtos];
             lstProd.forEach((item, idx) => {
                 if (item.idx === action.payload.idx) {
@@ -163,20 +166,17 @@ export default function (state = initialState, action) {
                 produtos: lstProd2
             }
         case INITIAL_STATE:
-            console.log('INITIAL_STATE')
             return {
                 ...state,
                 produtos: initialState.produtos
             }
         case CHANGE_STATE_PRODUCT:
-            console.log('CHANGE_STATE_PRODUCT')
             return {
                 ...state,
                 cadProduct: action.payload,
                 produto: action.prodPayLoad
             }
         case NEW_ID_PRODUCT:
-            console.log('NEW_ID_PRODUCT', action.payload)
             return {
                 ...state,
                 idProduto: action.payload
