@@ -1,0 +1,8 @@
+.LikeDislike{
+    width: 100%;
+    height: 100%;
+}
+
+.LikeDislike .Like{
+    disabled: true
+}

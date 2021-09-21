@@ -8,12 +8,11 @@
     width:90%;
     max-width: 700px;    
     grid-gap: 10px;
+    height: 100%;
     background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
 }
 .teste-item-12{
     background-color: rgb(201, 9, 9);
     display: flex;
-    height: 1500px;
-    /* width: 50%; */
 }
 

@@ -8,6 +8,8 @@ import { bindActionCreators } from 'redux';
 import * as actionsProduto from '../../store/actions/produtos';
 import { Link } from "react-router-dom";
 
+import LikeDislike from './Component/likeDislike';
+
 function getPosition(props) {
     if (props.position === 0) return "First"
     if (props.position === 1) return "Second"
@@ -17,7 +19,7 @@ function getPosition(props) {
 
 
 const CardSimple = (props) => {
-    const { produto, nota, clickLike, clickDisLike, auth, changeIdProduct } = props;
+    const { produto, nota, auth, changeIdProduct } = props;
 
     return (
         <div className="CardSimple">
@@ -48,8 +50,7 @@ const CardSimple = (props) => {
                     {!auth.loginAnonimo ?
                         (
                             <div className="Container-Controler-login">
-                                <div className="Like"><LikeOutlined onClick={clickLike} /></div>
-                                <div className="Dislike"><DislikeOutlined onClick={clickDisLike} /></div>
+                                <LikeDislike produto={produto} />
                             </div>
                         ) : null}
                 </div>

@@ -8,23 +8,25 @@ import * as actionsProduto from '../../store/actions/produtos';
 import Card from '../../Component/CardSimple/CardSimple';
 
 
-function clickLike(Arr, prd) {
+function clickLike(Arr, prd, user) {
     const dados = Arr;
 
     dados.forEach(item => {
         if (item.idx === prd.idx) {
-            return item.like++
+            item.like++
+            item.userVoto = [...item.userVoto, { user: user.name, type: 'L' }]
         }
     });
     return prd
 };
 
-function clickDisLike(Arr, prd) {
+function clickDisLike(Arr, prd, user) {
     const dados = Arr;
 
     dados.forEach((item) => {
         if (item.idx === prd.idx) {
-            return item.dislike++;
+            item.dislike++
+            item.userVoto = [...item.userVoto, { user: user.name, type: 'D' }]
         }
     })
 
@@ -52,7 +54,7 @@ function getNota(like, dislike) {
 
 const ListaProtudos = (props) => {
 
-    const { produtos, filter, type, updateProduct } = props;
+    const { produtos, filter, type, updateProduct, auth } = props;
     const lstProduto = produtos.slice();
     const regex = new RegExp(`^(.*)${filter}(.*)$`, "ig");
 
@@ -69,8 +71,8 @@ const ListaProtudos = (props) => {
                             produto={produto}
                             position={idx}
                             nota={getNota(produto.like, produto.dislike)}
-                            clickLike={() => updateProduct(clickLike(lstProduto, produto))}
-                            clickDisLike={() => updateProduct(clickDisLike(lstProduto, produto))
+                            clickLike={() => updateProduct(clickLike(lstProduto, produto, auth.user))}
+                            clickDisLike={() => updateProduct(clickDisLike(lstProduto, produto, auth.user))
                             }
                         />
                     ))
@@ -84,7 +86,8 @@ const ListaProtudos = (props) => {
 function mapStateToProps(state) {
     return {
         produtos: state.dados.produtos,
-        filter: state.dados.filter
+        filter: state.dados.filter,
+        auth: state.auth,
     };
 }
 
