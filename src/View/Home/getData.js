@@ -6,7 +6,6 @@ const API_URL =
 
 
 const getDados = async () => {
-    console.log('getDados')
     await fetch(API_URL)
         .then(response => {
             console.log(response)
@@ -23,7 +22,6 @@ const getDados = async () => {
 }
 
 const getDados2 = async () => {
-    console.log('getDados2')
     await api
         .get('/essencia')
         .then(result => {
@@ -37,7 +35,6 @@ const getDados2 = async () => {
 
 class DadosData extends Component {
     componentDidMount() {
-        console.log('componentDidMount')
         fetch(API_URL)
             .then(response => response.json()) // retorna uma promise
             .then(result => {

@@ -1,5 +1,5 @@
 .ListaProdutos{
-    display: grid;
+    display: flex-grid;
     grid-template-columns: 1;
     border: 3px groove rgb(118, 200, 147);
     border-radius: 8px;

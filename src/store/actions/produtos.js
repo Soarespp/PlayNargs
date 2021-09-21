@@ -23,7 +23,6 @@ import api from '../../services/Api';
 // }
 
 export async function getDadosApi(novoProduto) {
-    console.log('getDadosApi')
     let essencias = await api
         .get('/essencia')
         .then(result => {
@@ -40,7 +39,6 @@ export async function getDadosApi(novoProduto) {
 }
 
 export function alteraProduto(novoProduto) {
-    console.log('alteraProduto')
     return {
         type: PROD_CHANGE,
         payload: novoProduto
@@ -55,7 +53,6 @@ export function setFilter(newFilter) {
 }
 
 export async function insertProduct(newProduct) {
-    console.log('insertProduct')
     const result = await api
         .post('/essencia', newProduct)
         .then(result => {
@@ -75,7 +72,6 @@ export async function insertProduct(newProduct) {
 }
 
 export async function updateProduct(newProduct) {
-    console.log('updateProduct')
     const result = await api
         .put('/essencia', newProduct)
         .then(result => {
@@ -95,7 +91,6 @@ export async function updateProduct(newProduct) {
 }
 
 export async function deleteProduct(newProduct) {
-    console.log('deleteProduct', newProduct)
     const result = await api
         .delete('/essencia', { data: { idx: newProduct.idx } })
         .then(result => {
@@ -105,7 +100,6 @@ export async function deleteProduct(newProduct) {
             console.error('Failed deletar produto', err);
         });
 
-    console.log('result', result)
     if (!result.data.error) {
         return {
             type: DEL_PRODUCT,

@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux';
 import * as actionsProduto from '../../../store/actions/produtos';
 
 function controlarEnabled(type, event) {
-    console.log('controlarEnabled 123', type, event)
     if ((type === event) || (type === 'N'))
         return true
     else
@@ -15,7 +14,6 @@ function controlarEnabled(type, event) {
 }
 
 function clickLikeDis(prd, user, event) {
-    console.log('clickLikeDis', event)
     var prdEdt = prd
     if (event === 'L')
         prdEdt.like++
@@ -29,7 +27,6 @@ function clickLikeDis(prd, user, event) {
 
 
 function retirarLikeDis(prd, user, type) {
-    console.log('RetirarLikeDis')
     var prdEdt = prd
 
     if (type === 'L') {
@@ -51,7 +48,6 @@ const LikDislike = (props) => {
     const [tplike, setTplike] = useState('N')
 
     function getTypeLike() {
-        console.log('getTypeLike', produto.userVoto)
         const teste = produto.userVoto.find(item => item.user === auth.user.name)
 
 

@@ -35,13 +35,13 @@ class Auth extends Component {
                                 {'Anônimo'}
                             </button>
                         </div>
-                        <div className="login-box-buttons">
+                        {/* <div className="login-box-buttons">
                             <button type="submit"
                                 className="btn-login"
                                 onClick={() => this.props.loginAdmin()}>
                                 {'Admin'}
                             </button>
-                        </div>
+                        </div> */}
                         <div className="login-box-buttons">
                             <GoogleLogin
                                 clientId="641042680590-ablu62p5tmovu2ofhba9cl7th9n72i1k.apps.googleusercontent.com"

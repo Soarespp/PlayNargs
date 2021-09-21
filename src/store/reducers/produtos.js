@@ -121,7 +121,6 @@ var initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case BUSCAR_DADOS:
-            console.log('BUSCAR_DADOS', action.payload)
             return {
                 ...state,
                 produtos: action.payload
