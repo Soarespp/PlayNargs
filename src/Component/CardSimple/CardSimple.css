@@ -25,12 +25,12 @@
 .CardSimple-data-Title{
     display: flexbox;
     height: 100%;
-    width: 80%;
+    width: 60%;
 }
 
 .CardSimple-data-Title-item{
     display: flex;
-    width: 95%;
+    width: 98%;
     min-width: 155px;
     height: 50%;
     min-height: 30px; 
@@ -61,7 +61,7 @@
 .CardSimple-data-Title-nota{
     display: flex;
     height: 90%;
-    width: 22%;
+    width: 20%;
     min-width: 65px;
     font-size: 20px;
 }

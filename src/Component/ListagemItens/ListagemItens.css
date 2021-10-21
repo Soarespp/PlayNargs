@@ -1,18 +1,7 @@
 .ListagemItens{
-    display: grid;
-    grid-template-columns: 1;
+    display: inline-block;
     /* grid-template-columns: repeat(auto-fill, minmax(500px, 10fr)); */
     border-radius: 10px;
     background-image:  linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
     width: 100%;
-}
-
-.text-itens{ 
-    width: 100%;
-    text-align: left;
-    font-size: 25px;
-    margin-left: 5px;    
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }

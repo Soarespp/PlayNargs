@@ -9,6 +9,8 @@ import * as actionsProduto from '../../store/actions/produtos';
 import { Link } from "react-router-dom";
 
 import LikeDislike from './Component/likeDislike';
+import { ViewProduct } from '../styleGeral'
+
 
 function getPosition(props) {
     if (props.position === 0) return "First"
@@ -34,6 +36,11 @@ const CardSimple = (props) => {
                             <div className='CardSimple-data-Title-item'>
                                 <p className='CardSimple-h1-cortado'>{`Loja: ${produto.brand}  Loja: ${produto.place} `}</p>
                             </div>
+                        </div>
+                        <div style={{ height: '150px' }}>
+                            {(produto.urlImg) ?
+                                <ViewProduct src={produto.urlImg.url} />
+                                : null}
                         </div>
                         <div className='CardSimple-data-Title-nota'>
                             <h1 className='CardSimple-h1-cortado-nota'>{`Nota ${nota}`}</h1>
