@@ -1,27 +1,18 @@
 .ListagemItens{
-    border: 4px groove rgba(118, 200, 147, 0.836);
+    display: grid;
+    grid-template-columns: 1;
+    /* grid-template-columns: repeat(auto-fill, minmax(500px, 10fr)); */
     border-radius: 10px;
     background-image:  linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
     width: 100%;
 }
 
-.item-lista{
-    display: flex;
-    width: 100%;
-    border-bottom: 3px groove rgba(118, 200, 147, 0.836);;
-}
-
-.item-lista p{
-    color: rgb(255, 255, 255);
-}
-
 .text-itens{ 
-    /* width: 50%; */
-    /* max-width: 15ch; */
+    width: 100%;
+    text-align: left;
     font-size: 25px;
     margin-left: 5px;    
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    /* margin-right: 3px; */
 }

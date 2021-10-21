@@ -1,8 +1,10 @@
 import React from 'react';
 import './ListagemItens.css';
 import { getNota } from '../../arquivos/functions';
+import CardImgListaItem from './components/CardImgListaItem';
+import CardDescListaItem from './components/CardDescListaItem';
 
-import { ViewProduct, DescriptionLista } from './style'
+import { ItemLista } from './style';
 
 const ListagemItens = (props) => {
     const { produtos, type } = props;
@@ -14,14 +16,11 @@ const ListagemItens = (props) => {
                     .filter(produto => produto.type === type)
                     .slice(0, 3)
                     .map((produto, idx) => (
-                        <div className='item-lista'>
-                            {(produto.urlImg) && (produto.urlImg.url.length > 0) ?
-                                <ViewProduct src={produto.urlImg.url} id={idx} /> :
-                                <DescriptionLista>
-                                    {produto.name}
-                                </DescriptionLista>
-                            }
-                            <p className='text-itens'>{`Nota: ${getNota(produto.like, produto.dislike)}`}</p>
+                        <div>
+                            <ItemLista lado={(idx % 2)}>
+                                {((idx % 2) === 0) ? <CardImgListaItem produto={produto} /> : <CardDescListaItem produto={produto} />}
+                                {((idx % 2) !== 0) ? <CardImgListaItem produto={produto} /> : <CardDescListaItem produto={produto} />}
+                            </ItemLista>
                         </div>
                     ))
             }
