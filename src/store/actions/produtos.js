@@ -52,7 +52,8 @@ export function setFilter(newFilter) {
     }
 }
 
-export async function insertProduct(newProduct) {
+export async function insertProduct(newProduct, newFile) {
+    newProduct.urlImg = await IncDelFileProduct(newProduct, newFile)
     const result = await api
         .post('/essencia', newProduct)
         .then(result => {
@@ -71,7 +72,39 @@ export async function insertProduct(newProduct) {
     }
 }
 
-export async function updateProduct(newProduct) {
+async function IncDelFileProduct(newProduct, newFile, idFile) {
+    console.log('newProduct', newProduct)
+    console.log('newFile', newFile)
+    console.log('idFile', idFile)
+    if (((newFile) && (Object.keys(newFile).length !== 0) && (newProduct.urlImg) && (newProduct.urlImg.url.length !== 0)) ||
+        ((newFile) && (Object.keys(newFile).length === 0) && (newProduct.urlImg) && (newProduct.urlImg.url.length !== 0) && (idFile.length === 0))) {
+        await api.delete(`img/${newProduct.urlImg.id}`)
+            .catch(err => {
+                console.error('Failed deletar produto', err);
+            });
+    }
+
+    if ((newFile) && (Object.keys(newFile).length !== 0)) {
+        const data = new FormData();
+        data.append("file", newFile.file, newFile.name);
+
+        return await api
+            .post("img", data)
+            .then(response => {
+                return {
+                    id: response.data._id,
+                    url: response.data.url
+                }
+
+            })
+            .catch((err) => {
+                console.error('Failed incluir img produto', err);
+            });
+    }
+}
+
+export async function updateProduct(newProduct, newFile, idFile) {
+    newProduct.urlImg = await IncDelFileProduct(newProduct, newFile, idFile)
     const result = await api
         .put('/essencia', newProduct)
         .then(result => {
@@ -91,6 +124,12 @@ export async function updateProduct(newProduct) {
 }
 
 export async function deleteProduct(newProduct) {
+    if ((newProduct.urlImg) && (newProduct.urlImg.id.length !== 0))
+        await api.delete(`img/${newProduct.urlImg.id}`)
+            .catch(err => {
+                console.error('Failed deletar produto', err);
+            });
+
     const result = await api
         .delete('/essencia', { data: { idx: newProduct.idx } })
         .then(result => {

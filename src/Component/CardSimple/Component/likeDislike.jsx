@@ -70,7 +70,9 @@ const LikDislike = (props) => {
     }
 
     useEffect(() => {
-        getTypeLike(produto)
+        if (produto.userVoto) {
+            getTypeLike(produto)
+        }
     })
 
 

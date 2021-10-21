@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 const Header = (props) => {
     const { auth, loginAnonimo, getDadosApi } = props;
     const [logado, setLogado] = useState(true);
+    console.log(logado)
     useEffect(() => {
         getDadosApi();
         if ((auth.user === null) && (auth.loginAnonimo !== true)) {

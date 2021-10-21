@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+
 import Drawer from '@material-ui/core/Drawer';
-
-
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -13,6 +12,11 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import * as actionsProduto from '../../store/actions/produtos';
+
+import UploadFile from '../../Component/Upload/UploadFile/uploadFile';
+
+import { Preview } from './style';
+
 
 const drawerWidth = 800;
 
@@ -101,6 +105,8 @@ const getIdMax = (lstProd, type) => {
     return intertLstProd[0].idx;
 }
 
+
+
 const CadProductDrawer = (props) => {
     const { produtos, changeIdProduct, idProduto, newProduct, auth } = props;
 
@@ -110,22 +116,28 @@ const CadProductDrawer = (props) => {
     const [open, setOpen] = useState(false);
     var [produto, setProduto] = useState(newProduct);
     const [stateControle, setStateControle] = useState("B");
+    const [file, setFile] = useState({});
+    const [idFile, setIdFile] = useState('');
 
-
+    const alterarFileLocal = (file) => {
+        setFile(file)
+        setIdFile(file.id)
+    }
 
     function incluirProduto(produtoEdt) {
         var id = getIdMax(produtos, produtoEdt.type);
         id++;
         const prd2 = produtoEdt;
         prd2.idx = id;
+        prd2.userVoto = []
         if (auth.user.email !== null) {
             prd2.userCad = auth.user.email;
         }
-        props.insertProduct(prd2);
+        props.insertProduct(prd2, file);
     }
 
     function updateProduct(produtoEdt) {
-        props.updateProduct(produtoEdt);
+        props.updateProduct(produtoEdt, file, idFile);
     }
 
     function SalvarProduto(produtoEdt) {
@@ -158,6 +170,8 @@ const CadProductDrawer = (props) => {
         changeIdProduct(-1);
         setProduto(newProduct);
         setStateControle("B");
+        setIdFile('');
+        setFile({});
     }
 
     useEffect(() => {
@@ -176,6 +190,11 @@ const CadProductDrawer = (props) => {
         }
         else
             setOpen(false)
+
+        if ((produto.urlImg) && (produto.urlImg.id.length !== 0) && (idFile.length === 0)) {
+            setIdFile(produto.urlImg.id)
+        }
+
     }, [setOpen, produtos, idProduto, produto.idx, stateControle]);
 
     return (
@@ -233,6 +252,18 @@ const CadProductDrawer = (props) => {
                             value={produto.description}
                             onChange={handleChange("description")}
                         />
+                        <div >
+                            {((produto.urlImg) && (produto.urlImg.id.length !== 0) && (idFile.length !== 0))
+                                ? <div style={{ "text-align": "rigth" }}>
+                                    {/* <span> */}
+                                    <Preview src={produto.urlImg.url} />
+                                    {/* </span> */}
+                                    {/* <div>Id local: {idFile}</div> */}
+                                    <button onClick={() => setIdFile('')}>X</button>
+                                </div>
+                                : <UploadFile setDados={alterarFileLocal} />}
+                            {/* <UploadFile setDados={setFile} /> */}
+                        </div>
                         <div onChange={handleChange("type")}>
                             <input type="radio" value="juice" name="gender" checked={produto.type === 'juice'} /> Juice
                             <input type="radio" value="nargs" name="gender" checked={produto.type === 'nargs'} /> Nargs
@@ -254,7 +285,7 @@ const CadProductDrawer = (props) => {
                         </div>
                     </div>
                 </Drawer>
-            </div>
+            </div >
         </div >
     );
 }

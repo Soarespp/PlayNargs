@@ -47,6 +47,11 @@ const CadProduto = (props) => {
                     <p>Loja: </p><input className="input" value={produto.place}></input>
                     <p>Informações: </p><textarea className="memo" value={produto.description}></textarea>
                 </div>
+                {/* <div >
+                    <span>
+                        <img src={produto.urlImg.path} />
+                    </span>
+                </div> */}
             </div>
         </div >
     )

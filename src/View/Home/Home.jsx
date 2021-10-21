@@ -7,11 +7,11 @@ import * as actionsProduto from '../../store/actions/produtos';
 import Header from '../../Containers/Header/Header';
 
 const Home = (props) => {
-
     const { produtos } = props;
     return (
         <div className="Home">
             <Header search={false} />
+
             <div className="Home-container-dados">
                 <div className="Home-container-dados-grid">
                     <div className="Home-countainer-lista">
