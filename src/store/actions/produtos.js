@@ -76,6 +76,9 @@ async function IncDelFileProduct(newProduct, newFile, idFile) {
     console.log('newProduct', newProduct)
     console.log('newFile', newFile)
     console.log('idFile', idFile)
+    // if (Object.keys(newFile).length === 0) {
+    //     return newProduct.urlImg.url
+    // }
     if (((newFile) && (Object.keys(newFile).length !== 0) && (newProduct.urlImg) && (newProduct.urlImg.url.length !== 0)) ||
         ((newFile) && (Object.keys(newFile).length === 0) && (newProduct.urlImg) && (newProduct.urlImg.url.length !== 0) && (idFile.length === 0))) {
         await api.delete(`img/${newProduct.urlImg.id}`)
@@ -104,7 +107,9 @@ async function IncDelFileProduct(newProduct, newFile, idFile) {
 }
 
 export async function updateProduct(newProduct, newFile, idFile) {
-    newProduct.urlImg = await IncDelFileProduct(newProduct, newFile, idFile)
+    if (idFile >= 0) {
+        newProduct.urlImg = await IncDelFileProduct(newProduct, newFile, idFile)
+    }
     const result = await api
         .put('/essencia', newProduct)
         .then(result => {

@@ -120,8 +120,10 @@ const CadProductDrawer = (props) => {
     const [idFile, setIdFile] = useState('');
 
     const alterarFileLocal = (file) => {
+        console.log('file', file)
         setFile(file)
         setIdFile(file.id)
+        console.log('idFile', idFile)
     }
 
     function incluirProduto(produtoEdt) {
