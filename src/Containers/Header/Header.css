@@ -2,51 +2,51 @@
     display: flex;
     margin: 3px;
     width: 100%;
-    background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
-    height: 150px;
+    /* background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781)); */
+    background-color: rgb(213, 239, 247);
+    height: 90px;
     border-bottom: 3px groove rgba(118, 200, 147, 0.836);
+    justify-content: center;
 }
 
-.Container-Logo {
+.Header .Container {
     display: flex;
-    color: black;
-    height: 100%;
-    width: 92%;
-    min-width: 260px;
-    text-decoration-color: white;
+    width: 80%;
 }
 
-.Container-Logo .Container-Logo-link{
+.Header .Container .Container-Logo {
+    display: flex;
+    height: 100%;
+    width: 50%;
+}
+
+.Header .Container .Container-header {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+}
+
+.Header .Container-Logo .Container-Logo-link{
+    height: 100%;
     text-decoration: none;
 }
 
-.Header-Logo {
-    display: flex;
-    font-family: cursive;
+.Header .Header-Logo {
     font-size: 50px;
-    color: rgb(255, 255, 255);
-    text-decoration-color: white;
-    margin-left: 10px;
-    margin-top: 20%;
+    margin: 3px;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.Container-header {
-    display: flex;
-    flex: 1;
-    width: 8%;
-    align-items: center;
-    /* width: 100%;     */
-    align-items: flex-end; 
-}
+
 .Container-Login{
     align-items: flex-end; 
     margin-left: 3px;
     margin-bottom: 3px;
-    color: white;
+    color: black;
 }
 
 .Container-Menu {
     margin-left: 3px;
-    color: white;
     border: 3px groove rgb(188, 197, 181);
     border-radius: 8px;
     background-color: #34a0a4;
@@ -55,7 +55,6 @@
 
 .link {
     text-decoration: none;
-    color: black;
 }
 
 .Container-header {

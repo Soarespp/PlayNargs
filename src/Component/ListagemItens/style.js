@@ -1,16 +1,5 @@
 import styled from "styled-components";
 
-export const ViewProduct = styled.div`
-  width: 100%;  
-  height: 100%;
-  min-width:300px;
-  border-radius: 3px;
-  background-image: url(${props => props.src});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-`;
-
 export const DescriptionLista = styled.div`
     grid-column: col 3/ span 1;
     align-items: center;
@@ -19,6 +8,7 @@ export const DescriptionLista = styled.div`
     max-width:250px;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 `;
 
 // grid-template-columns: ${(props) => { if (props.lado === 0) { return 520 } else { return 250 } }}px 250px;
@@ -27,9 +17,8 @@ export const DescriptionLista = styled.div`
 // grid-template-columns: [col] 25% [col] 25% [col] 25% [col] 25% ;
 export const ItemLista = styled.div`
     display: grid;
-    grid-gap: 2px;
     grid-template-columns: [col] ${(props) => { if (props.lado === 0) { return 70 } else { return 30 } }}% [col] ${(props) => { if (props.lado === 0) { return 30 } else { return 70 } }}% ;
-    width:99%;
-    margin:5px;
+    border: 4px groove #52b69a;
+    border-radius: 5px;
     border-bottom: 3px groove rgba(118, 200, 147, 0.836);
 `;

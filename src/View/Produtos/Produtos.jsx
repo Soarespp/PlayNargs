@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import * as produtoActions from '../../store/actions/produtos';
 import ListaProtudos from '../../Containers/ListaProdutos/ListaProdutos'
 import Header from '../../Containers/Header/Header';
-import InputSearch from '../../Component/inputSearch/InputSearch';
+import CardViewListaProdutos from '../../Containers/NovaListaProdutos/CardViewListaProdutos';
 
 const Produtos = (props) => {
     const [typeParam, setProdutosInt] = useState('');
@@ -17,10 +17,10 @@ const Produtos = (props) => {
     }, [typeParam, props.match.params])
 
     return (
-        <div className="Home">
+        <div className='Produtos'>
             <Header search={true} />
-            <InputSearch />
-            <ListaProtudos type={typeParam} />
+            {(typeParam === 'juice') ? <CardViewListaProdutos type={typeParam} /> : <ListaProtudos type={typeParam} />}
+
         </div>
     );
 }

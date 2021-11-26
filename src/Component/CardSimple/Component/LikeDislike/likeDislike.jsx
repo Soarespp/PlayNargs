@@ -1,10 +1,10 @@
 import './likeDislike.css';
 import React, { useState, useEffect } from 'react';
-import LikeEdit from './Like/LikeIcon';
+import LikeEdit from './Component/Like/LikeIcon';
 
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import * as actionsProduto from '../../../store/actions/produtos';
+import * as actionsProduto from '../../../../store/actions/produtos';
 
 function controlarEnabled(type, event) {
     if ((type === event) || (type === 'N'))

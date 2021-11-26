@@ -59,12 +59,8 @@
     width: 80%;   
 }
 
-p{
-    color: azure;
-}
 .Produto .Container-Produto .Content-Dados .memo{
     display: flex;
-
 }
 
 .Produto .Controle{

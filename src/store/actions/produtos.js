@@ -5,6 +5,8 @@ import {
 
 import api from '../../services/Api';
 
+import { calcNota } from '../../arquivos/functions';
+
 // const getDadosAction = async () => {
 //     console.log('getDadosAction ')
 //     let essencias = await api
@@ -110,6 +112,9 @@ export async function updateProduct(newProduct, newFile, idFile) {
     if (idFile >= 0) {
         newProduct.urlImg = await IncDelFileProduct(newProduct, newFile, idFile)
     }
+
+    var vlNota = await calcNota(newProduct.userVoto)
+    newProduct.nota = vlNota
     const result = await api
         .put('/essencia', newProduct)
         .then(result => {
@@ -118,6 +123,7 @@ export async function updateProduct(newProduct, newFile, idFile) {
         .catch(err => {
             console.error('Failed alterar produto', err);
         });
+
 
     if (!result.data.error) {
         return {

@@ -1,0 +1,13 @@
+.CardViewListaProdutos{
+    display: 'block';
+    width: 80%;
+    border: 4px groove #52b69a;
+    border-radius: 6px;
+    background-color: rgb(213, 239, 247);
+    margin-top: 10px;
+}
+
+.CardViewListaProdutos .Container-title{
+    border-bottom: 4px groove #52b69a;
+    justify-content: center;
+}

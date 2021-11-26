@@ -1,8 +1,8 @@
 import './UserLogin.css';
 import React, { useState } from 'react';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Portal from '@material-ui/core/Portal';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ClickAwayListener from '@mui/base/ClickAwayListener';
+import Portal from '@mui/material/Portal';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { connect } from "react-redux";
 
 import { logout } from '../../store/actions/authActions';

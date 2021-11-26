@@ -1,0 +1,7 @@
+.Produtos {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;    
+    align-items: center;
+  }

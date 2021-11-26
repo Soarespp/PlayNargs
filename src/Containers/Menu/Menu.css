@@ -1,22 +1,17 @@
-.menu{
-    color: white;
-}
 .Menu-drawer{
-    background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
+    background-color: rgba(213, 239, 247, 0.171);
     height: 100%;
 }
 
-.Menu-drawer-pop{
-   background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
-   height: 100%;
+.Menu-drawer .Menu-drawer-pop{
+    background-color: rgb(213, 239, 247);
+    height: 100%;
 }
 
-.Menu-drawer-pop Button{
-    color: rgb(255, 255, 255);
-    /* background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781)); */
+.Menu-drawer .Menu-drawer-pop Button{
+    background-color: rgb(213, 239, 247);
 }
 
-.Menu-button-icone{
-    background-image: linear-gradient(to right, rgba(82, 182, 154, 0.452) , rgba(52, 160, 164, 0.781));
-    color: white;
+.Menu .Menu-button-icone{
+    background-color: rgb(213, 239, 247);
 }

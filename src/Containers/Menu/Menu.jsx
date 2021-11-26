@@ -1,11 +1,11 @@
 import React from 'react';
 import './Menu.css';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import { makeStyles } from '@mui/styles';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 import { Link } from "react-router-dom";
 
 
@@ -80,7 +80,7 @@ export default function Menu() {
     return (
         <div className="Menu">
             <React.Fragment key='right'>
-                <Button color="inherit" className='Menu-button-icone' onClick={toggleDrawer('right', true)}>Menu</Button>
+                <Button className='Menu-button-icone' onClick={toggleDrawer('right', true)}>Menu</Button>
                 <Drawer anchor={'right'} open={state['right']} onClose={toggleDrawer('right', false)} className='Menu-drawer'>
                     {list('right')}
                 </Drawer>

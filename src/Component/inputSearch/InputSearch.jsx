@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import * as produtoActions from '../../store/actions/produtos';
 
-import CadProductDrawer from '../../Containers/CadProductDrawer/CadProductDrawer';
+import NewProdDrawer from '../../Containers/NewProdDrawer/NewProdDrawer';
 
 const InputSearch = (props) => {
     const { filter, auth } = props;
@@ -22,7 +22,7 @@ const InputSearch = (props) => {
                             }}
                         />
                         <div className='content-drawer'>
-                            <CadProductDrawer />
+                            <NewProdDrawer />
                         </div>
                     </div>
                 ) : null}

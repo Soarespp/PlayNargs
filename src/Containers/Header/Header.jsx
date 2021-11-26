@@ -26,22 +26,21 @@ const Header = (props) => {
 
     return (
         < div className="Header">
-            <div className="Container-Logo">
-                <Link to='/Home' className="Container-Logo-link">
-                    <p className="Header-Logo">Play Nargs</p>
-                </Link>
-            </div>
-            <div className="Container-header">
-                <div className="Container-Menu">
-                    <Menu />
+            <div className="Container">
+                <div className="Container-Logo">
+                    <Link to='/Home' className="Container-Logo-link">
+                        <p className="Header-Logo">Play Nargs</p>
+                    </Link>
                 </div>
-                <div className="Container-Login">
-                    <UserLogin />
+                <div className="Container-header">
+                    <div className="Container-Menu">
+                        <Menu />
+                    </div>
+                    <div className="Container-Login">
+                        <UserLogin />
+                    </div>
                 </div>
-
             </div>
-
-
         </div >
     )
 }

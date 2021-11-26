@@ -11,17 +11,14 @@ const Home = (props) => {
     return (
         <div className="Home">
             <Header search={false} />
-
-            <div className="Home-container-dados">
-                <div className="Home-container-dados-grid">
-                    <div className="Home-countainer-lista">
-                        <h1 className='Home-text-header'>Juices</h1>
-                        <ListagemItens produtos={produtos} type='juice' />
-                    </div>
-                    <div className="Home-countainer-lista">
-                        <h1 className='Home-text-header'>Nargs</h1>
-                        <ListagemItens produtos={produtos} type='nargs' />
-                    </div>
+            <div className="container-dados" >
+                <div className="columns">
+                    <h1>Juices</h1>
+                    <ListagemItens produtos={produtos} type='juice' />
+                </div>
+                <div className="columns">
+                    <h1>Nargs</h1>
+                    <ListagemItens produtos={produtos} type='nargs' />
                 </div>
             </div>
         </div >

@@ -5,13 +5,12 @@ import { getNota } from '../../../arquivos/functions';
 const CardDescListaItem = (props) => {
     const { produto } = props;
     return (
-        <div style={{ 'height': '300px', 'width': '100%', 'grid-row': 'row' }}>
+        <div style={{ gridRow: 'row', display: 'flex', minHeight: '300px' }}>
             <DescriptionLista >
                 <p>{`Nota: ${getNota(produto.like, produto.dislike)}`}</p>
-                <p>{produto.name}</p>
-                <p>{produto.place}</p>
-                <p>{produto.brand}</p>
-                <p>{produto.description}</p>
+                <p>{`Nome: ${produto.name}`}</p>
+                <p>{`Marca: ${produto.place}`}</p>
+                <p>{`Loja: ${produto.brand}`}</p>
             </DescriptionLista>
         </div>
     );

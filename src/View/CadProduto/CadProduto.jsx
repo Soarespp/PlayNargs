@@ -1,6 +1,6 @@
 import './CadProduto.css';
 import React from 'react';
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
@@ -47,11 +47,11 @@ const CadProduto = (props) => {
                     <p>Loja: </p><input className="input" value={produto.place}></input>
                     <p>Informações: </p><textarea className="memo" value={produto.description}></textarea>
                 </div>
-                {/* <div >
+                <div >
                     <span>
                         <img src={produto.urlImg.path} />
                     </span>
-                </div> */}
+                </div>
             </div>
         </div >
     )

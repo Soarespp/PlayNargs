@@ -3,37 +3,27 @@
     width: 100%;
     flex-direction: column;
     text-align: center;    
-  }
-  .h1 {
-    font-weight: 200;
+    align-items: center;
   }
   
-  .linha {
-    display: flex;
-  }
-  
-  .Home-container-dados{
-    width: 90%;
-    margin-left: 5%;
-
-  }
-
-  .Home-container-dados-grid{
-    width: 100%;
+  .Home .container-dados{
+    width: 80%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px,800px));
-    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(265px,50%));
+    justify-content: center;
+    margin-top: 10px;
+    border: 4px groove #52b69a;
+    border-radius: 5px;
+    background-color: rgb(213, 239, 247);
   }
 
-  .Home-countainer-lista{
-    margin-left: 3%;
+  .Home .container-dados .columns{
+    display: block;
+    padding: 6px;
   }
 
-  .Home-countainer-lista h1{
-    color: rgb(255, 255, 255);
-    font-family: fantasy;
-  }
-  
-  .Home-text-header{
-    font-size: 45px;  
+ 
+  .Home h1{
+    color:black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
