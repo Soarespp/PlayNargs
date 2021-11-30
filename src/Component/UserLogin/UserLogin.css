@@ -1,56 +1,56 @@
 .dropdown{
     position: fixed;
     width: 200px;
-    top: 6.5%;
-    left: 91%;
+    top: 1px;
+    left: 94%;
     transform: translate(-50%, 50%);
     border: 1px solid;
     padding: 1px;
-    background-color: #34a0a4!important;
+    background-color: rgb(213, 239, 247)!important;
     border: 2px groove #4682b4; border-radius: 8px
 }
 
-.dropdown-menu{
+.dropdown .dropdown-menu{
     list-style-type: none;
     text-align: left;
     padding-left: 5px;
 }
 
 
-.user-header{
+.dropdown .user-header{
     width: 100%;
     padding-right: 10px;
 }
-.user-header p{
+.dropdown .user-header p{
   white-space: nowrap;
   width: 100%;
   overflow: hidden;              
   text-overflow:    ellipsis;
 }
 
-.dropdown-toggle{
+.dropdown .dropdown-toggle{
     width: 60%;
 }
 
-.container-userlogin-title{
+.dropdown .container-userlogin-title{
   width: 100%;
   display: flex
 }
 
-a{
+.dropdown a{
   white-space: nowrap;
   overflow: hidden;              
 
   text-overflow:    ellipsis;
 }
 
-.dropdown-toggle span{
+.dropdown .dropdown-toggle span{
   white-space: nowrap;
   overflow: hidden;              
   text-overflow:    ellipsis;
 }
 
-.profile {
+.dropdown .profile {
   margin-left: 10px;
 	border-radius: 5px;
   height: 30%;
