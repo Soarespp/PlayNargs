@@ -8,6 +8,7 @@ import * as actionsProduto from '../../store/actions/produtos';
 import { Link } from "react-router-dom";
 
 import Header from '../../Containers/Header/Header';
+import ImgView from '../../Component/ImgView/ImgView';
 
 
 const CadProduto = (props) => {
@@ -41,16 +42,19 @@ const CadProduto = (props) => {
                 <div className="CadProduto-Header">
                     <h1>Cadastro Produto</h1>
                 </div>
-                <div className="Content-Dados">
-                    <p>Nome: </p><input className="input" value={produto.name}></input>
-                    <p>Marca: </p><input className="input" value={produto.brand}></input>
-                    <p>Loja: </p><input className="input" value={produto.place}></input>
-                    <p>Informações: </p><textarea className="memo" value={produto.description}></textarea>
+                <div style={{ display: 'flex' }}>
+                    <div className="Content-Dados">
+                        <p>Nome: </p><input value={produto.name}></input>
+                        <p>Marca: </p><input value={produto.brand}></input>
+                        <p>Loja: </p><input value={produto.place}></input>
+                    </div>
+                    <div style={{ width: '300px', height: '300px', margin: '5px' }}>
+                        <ImgView produto={produto} />
+                    </div>
                 </div>
-                <div >
-                    <span>
-                        <img src={produto.urlImg.path} alt={produto.urlImg.path} />
-                    </span>
+                <div style={{ width: '100%', margin: '5px', display: 'block' }}>
+                    <p>Informações: </p>
+                    <textarea style={{ width: '80%', height: '80px', maxWidth: '95%', minWidth: '52%', maxHeight: '200px' }} value={produto.description} />
                 </div>
             </div>
         </div >

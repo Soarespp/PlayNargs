@@ -1,29 +1,34 @@
-export const getNota = (like, dislike) => {
+export const getNotaLike = (like, dislike) => {
     var val = parseInt((like / (like + dislike)) * 10);
 
-    if (val > 10) {
-        val = 10;
-    };
-
-    if (val < 0) {
-        val = 0
-    };
-
-    if (isNaN(val)) {
-        val = 0;
-    }
-
-    return val;
+    return getNota(val);
 }
 
 export function calcNota(listVoto) {
     var vltot = 0;
-    console.log('listVoto', listVoto, listVoto.length)
     listVoto.forEach(vtUser => {
         vltot = (vltot + vtUser.nota);
-        console.log('vltot', vltot, vtUser.nota)
     });
     vltot = (vltot / (listVoto.length))
-    console.log('vltot 2', vltot)
     return vltot;
 }
+
+export function getNota(nota) {
+    if (nota > 10) {
+        nota = 10;
+    };
+
+    if (nota < 0) {
+        nota = 0;
+    };
+
+    if (isNaN(nota)) {
+        nota = 0;
+    };
+
+    if (nota === null) {
+        nota = 0;
+    };
+
+    return nota;
+};

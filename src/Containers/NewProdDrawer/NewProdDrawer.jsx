@@ -8,7 +8,9 @@ import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import IconButton from '@mui/material/IconButton';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+// import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import KeyboardTabIcon from '@mui/icons-material/KeyboardTab';
+
 
 import UploadFile from '../../Component/Upload/UploadFile/uploadFile';
 
@@ -140,7 +142,7 @@ const NewProdDrawer = (props) => {
             className="NewProdDrawer"
         >
             <IconButton onClick={() => { cancelarEditProd() }} style={{ width: "20px" }}>
-                <KeyboardBackspaceIcon style={{ color: "black" }} />
+                <KeyboardTabIcon style={{ color: "black" }} />
             </IconButton>
             <div className="Container-dados">
                 <p>Id: {produto.idx} </p>
@@ -198,7 +200,7 @@ const NewProdDrawer = (props) => {
         <div>
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <IconButton onClick={novoProduto}>
+                    <IconButton onClick={novoProduto} style={{ color: 'black' }}>
                         <AddCircleOutlineIcon />
                     </IconButton>
                     <SwipeableDrawer

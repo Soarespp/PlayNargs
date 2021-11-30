@@ -9,6 +9,7 @@ const getApiUrl = (type) => {
 }
 
 const api = axios.create({
+    // altera para executar local ou service L ou P
     baseURL: getApiUrl('P'),
 });
 

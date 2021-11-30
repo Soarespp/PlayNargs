@@ -67,11 +67,12 @@ const CardView = (props) => {
                     <div style={{ display: 'block', margin: '10px', textAlign: 'left', width: '35%' }}>
                         <div style={{ display: 'flex', width: '100%' }}>
                             <div style={{ width: '80%' }}>
-                                <p style={{ margin: '10px' }}>{`Nome:  ${produto.name}`}</p>
-
-                                <p style={{ margin: '10px' }}>{`Marca:  ${produto.brand}`}</p>
-                                <p style={{ margin: '10px' }}>{`Loja:  ${produto.place}`}</p>
-                                <p style={{ margin: '10px' }}>{`Descrição:  ${produto.description}`}</p>
+                                <div onClick={() => { changeIdProduct(produto.idx) }}>
+                                    <p style={{ margin: '10px' }}>{`Nome:  ${produto.name}`}</p>
+                                    <p style={{ margin: '10px' }}>{`Marca:  ${produto.brand}`}</p>
+                                    <p style={{ margin: '10px' }}>{`Loja:  ${produto.place}`}</p>
+                                    <p style={{ margin: '10px' }}>{`Descrição:  ${produto.description}`}</p>
+                                </div>
                                 <p style={{ margin: '10px' }}>
                                     Avaliação:
                                     <input type='number' min='0' max='10' step="0.5" id="notaInput" style={{ paddingLeft: '5px', margin: '5px' }} value={notaInterna}
@@ -86,7 +87,10 @@ const CardView = (props) => {
                             <span style={{
                                 display: 'flex', width: '20%', fontSize: '40px', alignItems: 'center', justifyContent: 'center',
                                 borderWidth: '3px', borderStyle: 'dashed', borderColor: 'black'
-                            }}>
+
+                            }}
+                                onClick={() => { changeIdProduct(produto.idx) }}
+                            >
                                 {(produto.nota) ? produto.nota : '-'}
                             </span>
                         </div>
@@ -95,7 +99,7 @@ const CardView = (props) => {
                                 <p style={{ margin: '10px' }}>Descrição:</p>
                                 <textarea className="memo"
                                     value={produto.description}
-                                    style={{ margin: '10px', width: '90%' }}
+                                    style={{ margin: '10px', width: '90%', maxWidth: '95%', minWidth: '25%' }}
                                     readOnly={true}
                                 />
                             </span>

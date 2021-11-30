@@ -7,7 +7,7 @@ const CardDescListaItem = (props) => {
     return (
         <div style={{ gridRow: 'row', display: 'flex', minHeight: '300px' }}>
             <DescriptionLista >
-                <p>{`Nota: ${getNota(produto.like, produto.dislike)}`}</p>
+                <p>{`Nota: ${getNota(produto.nota)}`}</p>
                 <p>{`Nome: ${produto.name}`}</p>
                 <p>{`Marca: ${produto.place}`}</p>
                 <p>{`Loja: ${produto.brand}`}</p>
