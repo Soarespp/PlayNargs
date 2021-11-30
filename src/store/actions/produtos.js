@@ -113,7 +113,9 @@ export async function updateProduct(newProduct, newFile, idFile) {
         newProduct.urlImg = await IncDelFileProduct(newProduct, newFile, idFile)
     }
 
+    console.log('updateProduct ', newProduct.userVoto, newProduct)
     var vlNota = await calcNota(newProduct.userVoto)
+    console.log('updateProduct nota', vlNota, newProduct)
     newProduct.nota = vlNota
     const result = await api
         .put('/essencia', newProduct)

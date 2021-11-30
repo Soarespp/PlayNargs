@@ -13,6 +13,14 @@ export function calcNota(listVoto) {
     return vltot;
 }
 
+export function getNotaUser(prd, user) {
+    const locPdt = prd.find(item => item.user === user)
+    if (locPdt) {
+        return getNota(locPdt.nota);
+    } else
+        return 0;
+}
+
 export function getNota(nota) {
     if (nota > 10) {
         nota = 10;

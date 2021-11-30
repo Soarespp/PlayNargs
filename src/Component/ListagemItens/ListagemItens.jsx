@@ -1,6 +1,6 @@
 import React from 'react';
 import './ListagemItens.css';
-import { getNota, getNotaLike } from '../../arquivos/functions';
+import { getNota } from '../../arquivos/functions';
 import CardDescListaItem from './components/CardDescListaItem';
 import ImgView from '../ImgView/ImgView';
 
@@ -8,7 +8,6 @@ import { ItemLista } from './style';
 
 const ListagemItens = (props) => {
     const { produtos, type } = props;
-    // const lstProduto = produtos.sort((a, b) => { return getNotaLike(b.like, b.dislike) - getNotaLike(a.like, a.dislike) || a.name });
     const lstProduto = produtos.sort((a, b) => { return (getNota(b.nota) - getNota(a.nota) || a.name - b.name) });
     return (
         <div className="ListagemItens"  >

@@ -12,9 +12,19 @@ import { IconButton } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import InfoIcon from '@mui/icons-material/Info';
 
+import { getNota, getNotaUser } from '../../arquivos/functions';
+
 const CardView = (props) => {
     const { produto, pos, updateProduct, auth, changeIdProduct } = props;
     const [notaInterna, setnotaInterna] = useState(0)
+    const [notaInternaUser, setNotaInternaUser] = useState(0);
+
+    const handleChangeNota = (idName) => action => {
+        if (idName === 'notaInput') {
+            setnotaInterna(Number(action.target.value));
+        }
+        setNotaInternaUser(Number(action.target.value));
+    };
 
     function aplicarNota(pdrt, nt) {
         const pt = pdrt
@@ -24,15 +34,13 @@ const CardView = (props) => {
 
     const addVoto = (pdt, nt) => {
         const locPdt = pdt.userVoto.find(item => item.user === auth.user.name)
-
         if (pdt.userVoto.length === 0) {
             pdt.userVoto = [...pdt.userVoto, { user: auth.user.name, nota: nt }]
         } else {
-
             if (locPdt !== undefined) {
                 pdt.userVoto.forEach((notaLoc, idx) => {
                     if (notaLoc.user === auth.user.name) {
-                        pdt.userVoto[idx].nota = nt
+                        pdt.userVoto[idx].nota = nt;
                     }
                 })
             } else
@@ -43,16 +51,8 @@ const CardView = (props) => {
     }
 
     useEffect(() => {
-        if ((notaInterna !== produto.nota) && ((notaInterna === undefined) || (notaInterna === 0))) {
-            setnotaInterna(() => {
-                const locPdt = produto.userVoto.find(item => item.user === auth.user.name)
-
-                if (locPdt !== undefined) {
-                    return locPdt.nota
-                } else
-                    return 0
-            }
-            )
+        if (produto.userVoto) {
+            setNotaInternaUser(getNotaUser(produto.userVoto, auth.user.name))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [produto.userVoto])
@@ -75,11 +75,12 @@ const CardView = (props) => {
                                 </div>
                                 <p style={{ margin: '10px' }}>
                                     Avaliação:
-                                    <input type='number' min='0' max='10' step="0.5" id="notaInput" style={{ paddingLeft: '5px', margin: '5px' }} value={notaInterna}
+                                    <input type='number' min='0' max='10' step="0.5" id="notaInput" style={{ paddingLeft: '5px', margin: '5px' }} value={notaInternaUser}
                                         readOnly={auth.loginAnonimo}
-                                        onChange={() => { setnotaInterna(EventTarget.value) }} />
+                                        onChange={handleChangeNota("notaInput")}
+                                    />
                                     {!auth.loginAnonimo ?
-                                        <IconButton onClick={() => { updateProduct(aplicarNota(produto, Number(document.getElementById("notaInput").value))) }}><CheckIcon /></IconButton>
+                                        <IconButton onClick={() => { updateProduct(aplicarNota(produto, getNota(notaInterna))) }}><CheckIcon /></IconButton>
                                         : null}
                                 </p>
                             </div>
