@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 import { bindActionCreators } from 'redux';
 import * as produtoActions from '../../store/actions/produtos';
-import ListaProtudos from '../../Containers/ListaProdutos/ListaProdutos'
 import Header from '../../Containers/Header/Header';
 import CardViewListaProdutos from '../../Containers/NovaListaProdutos/CardViewListaProdutos';
 
@@ -19,7 +18,7 @@ const Produtos = (props) => {
     return (
         <div className='Produtos'>
             <Header search={true} />
-            {(typeParam === 'juice') ? <CardViewListaProdutos type={typeParam} /> : <ListaProtudos type={typeParam} />}
+            {(typeParam === 'juice') ? <CardViewListaProdutos type={typeParam} /> : <CardViewListaProdutos type={typeParam} />}
 
         </div>
     );

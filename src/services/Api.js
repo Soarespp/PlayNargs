@@ -9,7 +9,7 @@ const getApiUrl = (type) => {
 }
 
 const api = axios.create({
-    baseURL: getApiUrl('L'),
+    baseURL: getApiUrl('P'),
 });
 
 export default api;

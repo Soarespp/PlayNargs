@@ -49,7 +49,7 @@ const CadProduto = (props) => {
                 </div>
                 <div >
                     <span>
-                        <img src={produto.urlImg.path} />
+                        <img src={produto.urlImg.path} alt={produto.urlImg.path} />
                     </span>
                 </div>
             </div>

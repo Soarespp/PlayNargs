@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import * as actionsProduto from '../../store/actions/produtos';
+
 import { ItemLista } from './style';
 import ImgView from '../ImgView/ImgView';
 
 import { IconButton } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import InfoIcon from '@mui/icons-material/Info';
 
 const CardView = (props) => {
     const { produto, pos, updateProduct, auth, changeIdProduct } = props;
@@ -38,15 +42,20 @@ const CardView = (props) => {
         }
     }
 
-    function getVotoUser(pdt) {
-        const locPdt = pdt.userVoto.find(item => item.user === auth.user.name)
+    useEffect(() => {
+        if ((notaInterna !== produto.nota) && ((notaInterna === undefined) || (notaInterna === 0))) {
+            setnotaInterna(() => {
+                const locPdt = produto.userVoto.find(item => item.user === auth.user.name)
 
-        if (locPdt !== undefined) {
-            return setnotaInterna(locPdt.nota)
-        } else
-            return setnotaInterna(0)
-
-    }
+                if (locPdt !== undefined) {
+                    return locPdt.nota
+                } else
+                    return 0
+            }
+            )
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [produto.userVoto])
 
     return (
         <div className='CardView'>
@@ -58,16 +67,22 @@ const CardView = (props) => {
                     <div style={{ display: 'block', margin: '10px', textAlign: 'left', width: '35%' }}>
                         <div style={{ display: 'flex', width: '100%' }}>
                             <div style={{ width: '80%' }}>
+                                <p style={{ margin: '10px' }}>{`Nome:  ${produto.name}`}</p>
+
                                 <p style={{ margin: '10px' }}>{`Marca:  ${produto.brand}`}</p>
                                 <p style={{ margin: '10px' }}>{`Loja:  ${produto.place}`}</p>
                                 <p style={{ margin: '10px' }}>{`Descrição:  ${produto.description}`}</p>
                                 <p style={{ margin: '10px' }}>
                                     Avaliação:
                                     <input type='number' min='0' max='10' step="0.5" id="notaInput" style={{ paddingLeft: '5px', margin: '5px' }} value={notaInterna}
+                                        readOnly={auth.loginAnonimo}
                                         onChange={() => { setnotaInterna(EventTarget.value) }} />
-                                    <IconButton onClick={() => { updateProduct(aplicarNota(produto, Number(document.getElementById("notaInput").value))) }}><CheckIcon /></IconButton>
+                                    {!auth.loginAnonimo ?
+                                        <IconButton onClick={() => { updateProduct(aplicarNota(produto, Number(document.getElementById("notaInput").value))) }}><CheckIcon /></IconButton>
+                                        : null}
                                 </p>
                             </div>
+                            <Link to={`/cadproduto/${produto.idx}`}><IconButton ><InfoIcon /></IconButton></Link>
                             <span style={{
                                 display: 'flex', width: '20%', fontSize: '40px', alignItems: 'center', justifyContent: 'center',
                                 borderWidth: '3px', borderStyle: 'dashed', borderColor: 'black'

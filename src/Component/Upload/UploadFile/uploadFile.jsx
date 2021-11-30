@@ -1,16 +1,12 @@
 import './uploadFile.css'
-import React, { useState } from 'react'
+import React from 'react'
 
 import LoadFile from '../loadFile/LoadFile'
-import api from '../../../services/Api'
 
 
 const UploadFile = (props) => {
     const { setDados } = props
 
-    // const [loaded, setLoaded] = useState(false)
-    // const [file, setfile] = useState([])
-    // const [flCarregado, setflCarregado] = useState();
 
     const handleUpload = (files) => {
         const uploadedFiles = files.map(file => ({

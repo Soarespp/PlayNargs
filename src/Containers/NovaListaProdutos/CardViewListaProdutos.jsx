@@ -55,6 +55,21 @@ function getNota(like, dislike) {
     return val;
 };
 
+function getNota2(nota) {
+    if (nota > 10) {
+        nota = 10;
+    };
+
+    if (nota < 0) {
+        nota = 0
+    };
+
+    if (isNaN(nota)) {
+        nota = 0;
+    }
+
+    return nota;
+};
 
 const CardViewListaProdutos = (props) => {
     const { produtos, filter, type, updateProduct, auth } = props;
@@ -62,7 +77,8 @@ const CardViewListaProdutos = (props) => {
     const regex = new RegExp(`^(.*)${filter}(.*)$`, "ig");
 
 
-    lstProduto.sort((a, b) => { return getNota(b.like, b.dislike) - getNota(a.like, a.dislike) || a.name });
+    // lstProduto.sort((a, b) => { return getNota(b.like, b.dislike) - getNota(a.like, a.dislike) || a.name });
+    lstProduto.sort((a, b) => { return (getNota2(b.nota) - getNota2(a.nota) || a.name - b.name) });
     return (
         <div className='CardViewListaProdutos'>
             <div className='Container-title' style={{}}>

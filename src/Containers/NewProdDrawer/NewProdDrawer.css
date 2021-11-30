@@ -1,10 +1,37 @@
-.input{
-    width: 200px;
+.NewProdDrawer{
+    display: flex;
+    height: 100%;
 }
-.bottop{
-    background-color: lawngreen;
+
+.NewProdDrawer .Container-dados{
+    width: 100%;
+    background-color: rgba(189, 238, 253, 0.801);
+    text-align: center;
 }
-.cadastroProd{
-    text-align: left;
-    align-items: flex-start;
+
+.NewProdDrawer input{
+    width: 50%;
 }
+
+.NewProdDrawer textarea{
+    width: 50%;
+}
+
+.NewProdDrawer .Imagem{
+    width: 25%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.NewProdDrawer .radioControler{
+    border: 2px groove rgba(118, 200, 147, 0.836);
+    border-radius: 8px;
+    width: 150px;
+    text-align: start;
+    margin-left: auto;
+    margin-right: auto;
+}
+

@@ -2,20 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import * as actionsProduto from '../../store/actions/produtos';
+import './NewProdDrawer.css';
 
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import UploadFile from '../../Component/Upload/UploadFile/uploadFile';
 
 import { Preview } from './style';
 
 const getIdMax = (lstProd, type) => {
+    var vretur = 0;
     const intertLstProd = lstProd.slice();
     intertLstProd.sort((a, b) => { return (b.idx - a.idx) });
-    return intertLstProd[0].idx;
+    if (intertLstProd[0]) {
+        vretur = intertLstProd[0].idx
+    }
+    return vretur;
 }
 
 const NewProdDrawer = (props) => {
@@ -123,47 +129,49 @@ const NewProdDrawer = (props) => {
             setIdFile(produto.urlImg.id)
         }
 
-    }, [setOpen, produtos, idProduto, produto.idx, stateControle]);
+    }, [setOpen, produtos, idProduto, produto.idx, stateControle, idFile.length, produto.urlImg]);
 
     const list = (anchor) => (
         <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 800 }}
             role="presentation"
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
+            className="NewProdDrawer"
         >
-            <div className="cadastroProd">
+            <IconButton onClick={() => { cancelarEditProd() }} style={{ width: "20px" }}>
+                <KeyboardBackspaceIcon style={{ color: "black" }} />
+            </IconButton>
+            <div className="Container-dados">
                 <p>Id: {produto.idx} </p>
                 <p>Nome: </p>
                 <input
-                    className="input"
                     value={produto.name}
                     onChange={handleChange("name")}
                 />
                 <p>Marca: </p>
-                <input className="input"
+                <input
                     value={produto.brand}
                     onChange={handleChange("brand")}
                 />
                 <p>Loja: </p>
-                <input className="input" value={produto.place}
+                <input value={produto.place}
                     onChange={handleChange("place")}
                 />
                 <p>Informações: </p>
-                <textarea className="memo"
+                <textarea
                     value={produto.description}
                     onChange={handleChange("description")}
                 />
-                <div >
+                <div className="Imagem">
                     {((produto.urlImg) && (produto.urlImg.id.length !== 0) && (idFile.length !== 0))
-                        ? <div style={{ "text-align": "rigth" }}>
+                        ? <div >
                             <Preview src={produto.urlImg.url} />
                             <button onClick={() => setIdFile('')}>X</button>
                         </div>
                         : <UploadFile setDados={alterarFileLocal} />}
-                    {/* <UploadFile setDados={setFile} /> */}
                 </div>
-                <div onChange={handleChange("type")}>
+                <div className="radioControler" onChange={handleChange("type")}>
                     <input type="radio" value="juice" name="gender" checked={produto.type === 'juice'} /> Juice
                     <input type="radio" value="nargs" name="gender" checked={produto.type === 'nargs'} /> Nargs
                 </div>
@@ -191,7 +199,7 @@ const NewProdDrawer = (props) => {
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
                     <IconButton onClick={novoProduto}>
-                        <MenuIcon />
+                        <AddCircleOutlineIcon />
                     </IconButton>
                     <SwipeableDrawer
                         anchor={anchor}
